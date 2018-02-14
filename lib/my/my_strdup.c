@@ -5,6 +5,7 @@
 ** stdup for lib
 */
 
+#include <stdlib.h>
 #include "my.h"
 
 char *my_strdup(char *str)

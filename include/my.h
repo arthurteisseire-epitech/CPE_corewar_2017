@@ -7,7 +7,9 @@
 
 #ifndef MY_H_
 #define	MY_H_
-#include <stdlib.h>
+#ifndef READ_SIZE
+#define READ_SIZE 1024
+#endif
 
 void 		my_putchar(char);
 int 		my_strlen(char *);
@@ -34,5 +36,7 @@ int 		my_is_printable(char);
 char *		my_clean_str(char *);
 int 		my_str_is_num(char *);
 int 		my_str_is_alpha_num(char *);
+char *		read_fullfile(int);
+int 		my_arrlen(char **);
 
 #endif
