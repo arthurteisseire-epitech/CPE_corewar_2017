@@ -1,25 +1,25 @@
 /*
 ** EPITECH PROJECT, 2017
-** File Name : my_getnbr.c
+** LIB
 ** File description:
-** Rémi BISSON
+** get nbr
 */
-#include "my.h"
 
-int my_getnbr(char const *str)
+int my_getnbr(char *str)
 {
-	int nb = 0;
 	int i = 0;
+	int nb = 0;
+	int pos = 1;
 
-	if (str == NULL)
-		return (0);
-	while (str[i] != '\0') {
-		if (str[i] < '0' && str[i] > '9')
-			i++;
-		nb = nb * 10 + (str[i] - '0');
+	while (str[i] == '-') {
+		i++;
+		pos = pos * - 1;
+	}
+	while (str[i] >= '0' && str[i] <= '9') {
+		nb += str[i] - 48;
+		if (str[i + 1] >= '0' && str[i + 1] <= '9')
+			nb *= 10;
 		i++;
 	}
-	if (str[0] == '-')
-		nb = nb * -1;
-	return (nb);
+	return (nb * pos);
 }

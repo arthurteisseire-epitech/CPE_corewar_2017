@@ -1,32 +1,27 @@
 ##
-## EPITECH PROJECT, 2018
+## EPITECH PROJECT, 2017
 ## Makefile
 ## File description:
-## Ozz
+## Arthur Teisseire
 ##
-NAME	=	corewar
-CC	=	gcc
-SRC_DIR	=	$(realpath src)/
-INC	=	$(realpath include)/
-LIB_DIR	=	$(realpath lib/my)/
-SRC	=	$(SRC_DIR)main.c
-OBJ	=	$(SRC:.c=.o)
-CFLAGS +=	-Wall -W -Wextra -I$(INC)
-LIB	=	my
-LIBS	=	-L$(LIB_DIR) -l$(LIB)
 
-all:	$(NAME)
+LIB	=	lib/my
+ASM	=	asm
+COREWAR	=	corewar
 
-$(NAME):	$(OBJ)
-	make re -C $(LIB_DIR)
-	$(CC) -o $(NAME) $(OBJ) $(CFLAGS) $(LIBS)
+all:
+	make -C $(LIB)
+	make -C $(ASM)
+	make -C $(COREWAR)
 
 clean:
-	make clean -C $(LIB_DIR)
-	rm -f $(OBJ)
+	make clean -C $(LIB)
+	make clean -C $(ASM)
+	make clean -C $(COREWAR)
 
-fclean:	clean
-	make fclean -C $(LIB_DIR)
-	rm -f $(NAME)
+fclean:
+	make fclean -C $(LIB)
+	make fclean -C $(ASM)
+	make fclean -C $(COREWAR)
 
-re:	fclean all clean
+re: fclean all

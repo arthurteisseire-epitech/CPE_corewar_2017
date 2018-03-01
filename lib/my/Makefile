@@ -1,29 +1,51 @@
 ##
-## EPITECH PROJECT, 2018
-## Makefile
+## EPITECH PROJECT, 2017
+## LIB
 ## File description:
-## Rémi BISSON
+## makefile for lib
 ##
-SRC	=	my_putchar.c	\
-		my_putnbr.c	\
-		my_putstr.c	\
-		my_put_error.c	\
-		my_strlen.c	\
-		my_getnbr.c
-OBJ	=	$(SRC:.c=.o)
-INC	=	my.h
-NAME	=	libmy.a
 
-all: $(NAME)
+SRC	=	my_putchar.c  			\
+		my_putstr.c 			\
+		my_puterr.c 			\
+		my_strlen.c 			\
+		my_getnbr.c 			\
+		free_array.c 			\
+		my_show_array.c 		\
+		my_putnbr.c 			\
+		itos.c				\
+		stoi.c 				\
+		my_strdup.c 			\
+		my_strcat.c 			\
+		my_char_is_num.c 		\
+		my_char_is_alpha.c 		\
+		my_char_is_alpha_num.c		\
+		my_strcmp.c 			\
+		my_strncmp.c 			\
+		my_strtab.c 			\
+		is_in_str.c 			\
+		my_strnlcpy.c 			\
+		my_arrcpy.c 			\
+		my_is_printable.c 		\
+		my_cleanstr.c 			\
+		my_str_is_nb.c 			\
+		my_str_is_alpha_num.c		\
+		my_arrlen.c 			\
+		read_fullfill.c
+
+OBJ	=	$(SRC:.c=.o)
+CFLAGS	+=	-W -Wall -Wextra
+NAME	=	libmy.a
 
 $(NAME):	$(OBJ)
 	ar rc $(NAME) $(OBJ)
-	cp $(INC) ../../include
+
+all:	$(NAME)
 
 clean:
 	rm -f $(OBJ)
 
-fclean: clean
+fclean:	clean
 	rm -f $(NAME)
 
 re:	fclean all
