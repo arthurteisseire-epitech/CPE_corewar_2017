@@ -11,7 +11,7 @@ int my_str_is_num(char *str)
 
 	while (str[i] == '-')
 		i++;
-	while (str[i] >= '0' && str[i] <= '9' || (str[i] == '\0')) {
+	while ((str[i] >= '0' && str[i] <= '9') || (str[i] == '\0')) {
 		if (str[i] == '\0')
 			return (1);
 		i++;
