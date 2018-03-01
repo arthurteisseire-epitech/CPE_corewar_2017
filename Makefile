@@ -2,7 +2,7 @@
 ## EPITECH PROJECT, 2018
 ## Makefile
 ## File description:
-## Rémi BISSON
+## Ozz
 ##
 NAME	=	corewar
 CC	=	gcc
