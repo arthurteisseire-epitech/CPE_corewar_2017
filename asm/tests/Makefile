@@ -4,6 +4,7 @@
 ## File description:
 ## Rémi BISSON
 ##
+
 NAME	=	units
 CC	=	gcc
 SRC_DIR	=	$(realpath ../src)/
@@ -34,3 +35,6 @@ fclean:	clean
 	rm -f $(NAME)
 
 re:	fclean all clean
+
+test_run: all
+	./$(NAME)
