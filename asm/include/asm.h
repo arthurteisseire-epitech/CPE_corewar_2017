@@ -21,7 +21,7 @@ typedef struct token {
 
 typedef struct line {
 	int label;
-	int nb_bytes;	
+	int nb_bytes;
 	int nb_tokens;
 	token_t *tokens;
 } line_t;
@@ -33,5 +33,9 @@ typedef struct buffer {
 } buffer_t;
 
 int my_asm(buffer_t *buffer, char *pathname);
+
+#ifndef SEPARATORS
+#define SEPARATORS (char[3]){SEPARATOR_CHAR, ' ', '\t'}
+#endif
 
 #endif
