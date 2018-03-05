@@ -24,9 +24,11 @@ $(NAME):	$(OBJ)
 	$(CC) -o $(NAME) $(OBJ) $(CFLAGS) $(LIBS)
 
 clean:
+	make clean -C $(DLIB)
 	rm -f $(OBJ)
 
 fclean:	clean
+	make fclean -C $(DLIB)
 	rm -f $(NAME)
 
 re:	fclean all clean
