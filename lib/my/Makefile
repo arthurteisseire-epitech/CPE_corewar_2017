@@ -1,51 +1,56 @@
 ##
 ## EPITECH PROJECT, 2017
-## LIB
+## Makefile
 ## File description:
-## makefile for lib
+## Arthur Teisseire
 ##
 
-SRC	=	my_putchar.c  			\
-		my_putstr.c 			\
-		my_puterr.c 			\
-		my_strlen.c 			\
-		my_getnbr.c 			\
-		free_array.c 			\
-		my_show_array.c 		\
-		my_putnbr.c 			\
-		itos.c				\
-		stoi.c 				\
-		my_strdup.c 			\
-		my_strcat.c 			\
-		my_char_is_num.c 		\
-		my_char_is_alpha.c 		\
-		my_char_is_alpha_num.c		\
-		my_strcmp.c 			\
-		my_strncmp.c 			\
-		my_strtab.c 			\
-		is_in_str.c 			\
-		my_strnlcpy.c 			\
-		my_arrcpy.c 			\
-		my_is_printable.c 		\
-		my_cleanstr.c 			\
-		my_str_is_nb.c 			\
-		my_str_is_alpha_num.c		\
-		my_arrlen.c 			\
-		read_fullfill.c
+CC	=	gcc
+INC	=	my.h
+DTESTS	=	tests/
 
+SRC	=	my_strlen.c \
+		my_putchar.c \
+		my_putstr.c \
+		my_puterror.c \
+		my_put_nbr.c \
+		my_putnbr_base.c \
+		my_strcmp.c \
+		my_strncmp.c \
+		my_str_isalphanum.c \
+		my_strcpy.c \
+		my_strncpy.c \
+		my_strcat.c \
+		my_strncat.c \
+		my_strdup.c \
+		my_atoi.c \
+		my_itoa.c \
+		concat.c \
+		get_next_line.c \
+		split.c \
+		read_fullfile.c \
+		my_arrlen.c \
+		free_array.c
+
+CFLAGS	+=	-Wall -W -Wextra
 OBJ	=	$(SRC:.c=.o)
-CFLAGS	+=	-W -Wall -Wextra
 NAME	=	libmy.a
 
+all: $(NAME)
+
 $(NAME):	$(OBJ)
+	cp $(INC) ../../include
 	ar rc $(NAME) $(OBJ)
 
-all:	$(NAME)
-
 clean:
+	make clean -C $(DTESTS)
 	rm -f $(OBJ)
 
-fclean:	clean
+fclean: clean
+	make fclean -C $(DTESTS)
 	rm -f $(NAME)
 
 re:	fclean all
+
+test_run: re
+	make test_run -C $(DTESTS)

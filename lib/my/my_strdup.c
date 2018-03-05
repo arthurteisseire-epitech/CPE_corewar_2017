@@ -1,24 +1,17 @@
 /*
 ** EPITECH PROJECT, 2017
-** LIB
+** File Name : my_strdup.c
 ** File description:
-** stdup for lib
+** by Arthur Teisseire
 */
 
 #include <stdlib.h>
 #include "my.h"
 
-char *my_strdup(char *str)
+char *my_strdup(char const *str)
 {
-	char *copy = malloc(sizeof(char) * my_strlen(str) + 1);
-	int i = 0;
+	char *res = malloc(sizeof(char) * (my_strlen(str) + 1));
 
-	if (copy == NULL)
-		return (NULL);
-	while (str[i] != '\0') {
-		copy[i] = str[i];
-		i++;
-	}
-	copy[i] = '\0';
-	return (copy);
+	my_strcpy(res, str);
+	return (res);
 }

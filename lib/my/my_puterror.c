@@ -1,6 +1,6 @@
 /*
 ** EPITECH PROJECT, 2017
-** File Name : my_putstr.c
+** File Name : my_puterror.c
 ** File description:
 ** By Arthur Teisseire
 */
@@ -8,7 +8,7 @@
 #include <unistd.h>
 #include "my.h"
 
-void my_putstr(char const *str)
+void my_puterror(char const *str)
 {
-	write(1, str, my_strlen(str));
+	write(2, str, my_strlen(str));
 }
