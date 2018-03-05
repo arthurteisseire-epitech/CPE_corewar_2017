@@ -21,6 +21,7 @@ NAME	=	asm
 all:	$(NAME)
 
 $(NAME):	$(OBJ)
+	make re -C $(DLIB)
 	$(CC) -o $(NAME) $(OBJ) $(CFLAGS) $(LIBS)
 
 clean:
@@ -31,7 +32,7 @@ fclean:	clean
 	make fclean -C $(DLIB)
 	rm -f $(NAME)
 
-re:	fclean all clean
+re:	fclean all
 
 test_run:
 	make test_run -C $(DTESTS)

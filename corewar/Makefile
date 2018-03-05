@@ -20,6 +20,7 @@ NAME	=	corewar
 all: $(NAME)
 
 $(NAME):	$(OBJ)
+	make re -C $(DLIB)
 	$(CC) -o $(NAME) $(OBJ) $(LIBS)
 
 clean:
