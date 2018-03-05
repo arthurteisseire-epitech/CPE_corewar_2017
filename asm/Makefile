@@ -8,10 +8,12 @@
 CC	=	gcc
 ROOT	=	$(realpath ..)/
 DSRC	=	$(realpath src)/
+DPARS	=	$(DSRC)/parse/
 INC	=	$(realpath include)/
 DTESTS	=	$(realpath tests)/
 DLIB	=	$(ROOT)lib/my/
-SRC	=	$(DSRC)main.c
+SRC	=	$(DSRC)main.c \
+		$(DPARS)get_id_cmd.c
 OBJ	=	$(SRC:.c=.o)
 CFLAGS +=	-Wall -W -Wextra -I$(INC)
 LIB	=	my
