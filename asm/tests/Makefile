@@ -7,34 +7,36 @@
 
 NAME	=	units
 CC	=	gcc
-SRC_DIR	=	$(realpath ../src)/
+DSRC	=	$(realpath ../src)/
 INC	=	$(realpath ../include)/
-LIB_DIR	=	$(realpath ../lib/my)/
-SRC_UTD	=	$(realpath .)/
-SRC	=	$(SRC_DIR)file.c
+DLIB	=	$(realpath ../lib/my)/
+DSRC_UT	=	$(realpath .)/
+
+SRC	=	$(DSRC)file.c
+
 SRC_UT	=	$(SRC_UTD)tests.c
-OBJ	=	$(SRC:.c=.o) \
-		$(SRC_UT:.c=.o)
+
+OBJ	=	$(SRC:.c=.o) $(SRC_UT:.c=.o)
 CFLAGS +=	-Wall -W -Wextra -I$(INC) --coverage
 LDFLAGS	=	-lcriterion -lgcov
 LIB	=	my
-LIBS	=	-L$(LIB_DIR) -l$(LIB)
+LIBS	=	-L$(DLIB) -l$(LIB)
 
 all:	$(NAME)
 
 $(NAME):	$(OBJ)
-	make re -C $(LIB_DIR)
-	$(CC) -o $(NAME) $(OBJ) $(CFLAGS) $(LDFLAGS) $(LIBS)
+	make re -C $(DLIB)
+	$(CC) -o $(NAME) $(OBJ) $(LDFLAGS) $(LIBS)
 
 clean:
-	make clean -C $(LIB_DIR)
+	make clean -C $(DLIB)
 	rm -f $(OBJ)
 
 fclean:	clean
-	make fclean -C $(LIB_DIR)
+	make fclean -C $(DLIB)
 	rm -f $(NAME)
 
-re:	fclean all clean
+re:	fclean all
 
 test_run: all
 	./$(NAME)
