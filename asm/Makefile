@@ -11,7 +11,8 @@ DSRC	=	$(realpath src)/
 INC	=	$(realpath include)/
 DTESTS	=	$(realpath tests)/
 DLIB	=	$(ROOT)lib/my/
-SRC	=	$(DSRC)main.c
+SRC	=	$(DSRC)main.c \
+		$(DSRC)asm.c
 OBJ	=	$(SRC:.c=.o)
 CFLAGS +=	-Wall -W -Wextra -I$(INC)
 LIB	=	my

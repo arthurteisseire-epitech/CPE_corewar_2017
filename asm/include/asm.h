@@ -32,4 +32,6 @@ typedef struct buffer {
 	int curr_byte;
 } buffer_t;
 
+int my_asm(buffer_t *buffer, char *pathname);
+
 #endif
