@@ -14,8 +14,7 @@ DLIB	=	$(ROOT)lib/my/
 
 SRC	=	$(DSRC)main.c \
 		$(DSRC)asm.c 	\
-		$(DSRC)set_line.c 	\
-
+		$(DSRC)set_line.c
 
 OBJ	=	$(SRC:.c=.o)
 CFLAGS +=	-Wall -W -Wextra -I$(INC)
@@ -27,7 +26,7 @@ all:	$(NAME)
 
 $(NAME):	$(OBJ)
 	make re -C $(DLIB)
-	$(CC) -o $(NAME) $(OBJ) $(CFLAGS) $(LIBS)
+	$(CC) -o $(NAME) $(OBJ) $(LIBS)
 
 clean:
 	make clean -C $(DLIB)
