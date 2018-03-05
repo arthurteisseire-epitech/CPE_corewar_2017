@@ -1,42 +1,33 @@
 ##
-## EPITECH PROJECT, 2018
+## EPITECH PROJECT, 2017
 ## Makefile
 ## File description:
-## Rémi BISSON
+## Arthur Teisseire
 ##
 
-NAME	=	units
-CC	=	gcc
-DSRC	=	$(realpath ../src)/
-INC	=	$(realpath ../include)/
-DLIB	=	$(realpath ../lib/my)/
-DSRC_UT	=	$(realpath .)/
-
-SRC	=	$(DSRC)file.c
-
-SRC_UT	=	$(SRC_UTD)tests.c
-
-OBJ	=	$(SRC:.c=.o) $(SRC_UT:.c=.o)
-CFLAGS +=	-Wall -W -Wextra -I$(INC) --coverage
-LDFLAGS	=	-lcriterion -lgcov
+DSRC_UT	=	./
+DLIB	=	../
+INC	=	$(DLIB)
+SRC_UT	=	$(DSRC_UT).c
 LIB	=	my
 LIBS	=	-L$(DLIB) -l$(LIB)
+CFLAGS	=	-Wall -W -Wextra --coverage -I$(INC)
+LDFLAGS	=	-lcriterion -lgcov
+OBJ	=	$(SRC_UT:.c=.o)
+NAME	=	units
 
-all:	$(NAME)
+all: $(NAME)
 
 $(NAME):	$(OBJ)
-	make re -C $(DLIB)
-	$(CC) -o $(NAME) $(OBJ) $(LDFLAGS) $(LIBS)
+	gcc -o $(NAME) $(OBJ) $(CFLAGS) $(LDFLAGS) $(LIBS)
 
 clean:
-	make clean -C $(DLIB)
 	rm -f $(OBJ)
 
-fclean:	clean
-	make fclean -C $(DLIB)
+fclean: clean
 	rm -f $(NAME)
 
-re:	fclean all
+re: fclean all
 
-test_run: all
+test_run: re
 	./$(NAME)
