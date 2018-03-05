@@ -25,3 +25,8 @@ fclean:
 	make fclean -C $(COREWAR)
 
 re: fclean all
+
+test_run:
+	make test_run -C $(LIB)
+	make test_run -C $(ASM)
+	make test_run -C $(COREWAR)

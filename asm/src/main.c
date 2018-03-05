@@ -11,7 +11,7 @@
 static int check_args(int ac)
 {
 	if (ac == 1) {
-		my_puterr("Usage: ./asm file_name[.s] ....\n");
+		my_puterror("Usage: ./asm file_name[.s] ....\n");
 		return (-1);
 	}
 	return (0);

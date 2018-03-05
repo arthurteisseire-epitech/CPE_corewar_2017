@@ -39,7 +39,6 @@ NAME	=	libmy.a
 all: $(NAME)
 
 $(NAME):	$(OBJ)
-	cp $(INC) ../../include
 	ar rc $(NAME) $(OBJ)
 
 clean:
