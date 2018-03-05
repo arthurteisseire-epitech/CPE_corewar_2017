@@ -9,6 +9,7 @@ CC	=	gcc
 ROOT	=	$(realpath ..)/
 DSRC	=	$(realpath src)/
 INC	=	$(realpath include)/
+DTESTS	=	$(realpath tests)/
 DLIB	=	$(ROOT)lib/my/
 SRC	=	$(DSRC)main.c
 OBJ	=	$(SRC:.c=.o)
@@ -29,3 +30,6 @@ fclean:	clean
 	rm -f $(NAME)
 
 re:	fclean all clean
+
+test_run:
+	make test_run -C $(DTESTS)
