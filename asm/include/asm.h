@@ -14,15 +14,16 @@ typedef struct label {
 } label_t;
 
 typedef struct token {
-	int type;
 	char *str;
+	int type;
+	int cbyte;
 } token_t;
 
 typedef struct line {
-	token_t *token;
-	int size;
-	char label;
+	int label;
 	int nb_bytes;	
+	int nb_tokens;
+	token_t *tokens;
 } line_t;
 
 typedef struct buffer {
