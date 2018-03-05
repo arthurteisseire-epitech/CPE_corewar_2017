@@ -13,7 +13,7 @@
 
 void 		my_putchar(char);
 int 		my_strlen(char *);
-int			my_putstr(char *);
+int		my_putstr(char *);
 int 		my_puterr(char *);
 int   		my_get_nbr(char *);
 void 		free_array(char **);
@@ -27,7 +27,7 @@ int 		my_char_is_alpha_num(char);
 int 		my_char_is_alpha(char);
 int 		my_char_is_num(char);
 int 		my_strcmp(char const *, char const *);
-int			my_strncmp(char const *, char const *, int);
+int		my_strncmp(char const *, char const *, int);
 int 		is_in_str(char *str, char);
 char **		my_strtab(char *, char *);
 char * 		my_strnlcpy(char *, int);

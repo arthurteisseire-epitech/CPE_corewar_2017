@@ -31,4 +31,6 @@ typedef struct buffer {
 	int curr_byte;
 } buffer_t;
 
+int get_id_cmd(op_t *op_tab, char *cmd);
+
 #endif

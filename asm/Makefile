@@ -15,7 +15,7 @@ DLIB	=	$(ROOT)lib/my/
 SRC	=	$(DSRC)main.c \
 		$(DPARS)get_id_cmd.c
 OBJ	=	$(SRC:.c=.o)
-CFLAGS +=	-Wall -W -Wextra -I$(INC)
+CFLAGS +=	-Wall -W -Wextra -I$(INC) -g
 LIB	=	my
 LIBS	=	-L$(DLIB) -l$(LIB)
 NAME	=	asm
