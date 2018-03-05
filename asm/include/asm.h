@@ -8,6 +8,10 @@
 #ifndef ASM_H
 #define ASM_H
 
+#ifndef SEPARATORS
+	#define SEPARATORS (char[3]){SEPARATOR_CHAR, ' ', '\t'}
+#endif
+
 typedef struct label {
 	char *label;
 	int line;
@@ -33,9 +37,6 @@ typedef struct buffer {
 } buffer_t;
 
 int my_asm(buffer_t *buffer, char *pathname);
-
-#ifndef SEPARATORS
-#define SEPARATORS (char[3]){SEPARATOR_CHAR, ' ', '\t'}
-#endif
+int set_line(line_t *line_data, char *line);
 
 #endif
