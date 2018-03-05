@@ -1,14 +1,13 @@
 /*
 ** EPITECH PROJECT, 2017
-** EvalExpr
+** File Name : my_putchar.c
 ** File description:
-** CPool
+** By Arthur Teisseire
 */
 
 #include <unistd.h>
 
-int my_putchar(char c)
+void my_putchar(char const c)
 {
 	write(1, &c, 1);
-	return (1);
 }

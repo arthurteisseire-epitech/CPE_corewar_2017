@@ -1,42 +1,41 @@
 /*
 ** EPITECH PROJECT, 2017
-** LIB
+** File Name : my.h
 ** File description:
-** lib.h
+** By Arthur Teisseire
 */
 
-#ifndef MY_H_
-#define	MY_H_
-#ifndef READ_SIZE
-#define READ_SIZE 1024
-#endif
+#ifndef MY_H
+#define MY_H
 
-void 		my_putchar(char);
-int 		my_strlen(char *);
-int		my_putstr(char *);
-int 		my_puterr(char *);
-int   		my_get_nbr(char *);
-void 		free_array(char **);
-void 		my_show_array(char **);
-int    		my_putnbr(int);
-char *		itos(int);
-int 		stoi(char *);
-char *  	my_strdup(char *);
-char *		my_strcat(char *, char *);
-int 		my_char_is_alpha_num(char);
-int 		my_char_is_alpha(char);
-int 		my_char_is_num(char);
-int 		my_strcmp(char const *, char const *);
-int		my_strncmp(char const *, char const *, int);
-int 		is_in_str(char *str, char);
-char **		my_strtab(char *, char *);
-char * 		my_strnlcpy(char *, int);
-char **		my_arrcpy(char **);
-int 		my_is_printable(char);
-char *		my_clean_str(char *);
-int 		my_str_is_num(char *);
-int 		my_str_is_alpha_num(char *);
-char *		read_fullfile(int);
-int 		my_arrlen(char **);
+#define READ_SIZE 4096
+
+void	my_putchar(char const c);
+void	my_puterror(char const *str);
+void	my_putstr(char const *str);
+int	my_strlen(char const *str);
+int	my_atoi(char const *str);
+char*	my_strcpy(char *dest, char const *src);
+char*	my_strncpy(char *dest, char const *src, int const n);
+int	my_put_nbr(int nb);
+int	my_str_isalphanum(char const *str);
+char*	my_strdup(char const *str);
+int	my_strcmp(char const *s1, char const *s2);
+int	my_strncmp(char const *s1, char const *s2, int const n);
+char*	get_next_word(char **str, char const *flags);
+int	count_words(char *str, char const *flags);
+char**	split(char *str, char const *flags);
+int	is_char_in_str(char const c, char const *str);
+int	len_first_word(char *str, char const *flags);
+int	my_putnbr_base(unsigned int nbr, char const *base);
+char*	get_next_line(int fd);
+char*	concat(char *dest, char *src, int len_src);
+char*	my_strcat(char *dest, char const *src);
+char*	my_strncat(char *dest, char const *src, int const n);
+int	nb_len(int nb);
+char*	my_itoa(int nb);
+char*	read_fullfile(int fd);
+int	my_arrlen(char **array);
+void	free_array(char **arr);
 
 #endif

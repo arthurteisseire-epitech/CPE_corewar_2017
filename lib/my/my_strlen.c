@@ -1,14 +1,18 @@
 /*
 ** EPITECH PROJECT, 2017
-** lib
+** File Name : my_strlen.c
 ** File description:
-** my_strlen
+** By Arthur Teisseire
 */
 
-int my_strlen(char *str)
+#include "my.h"
+
+int my_strlen(char const *str)
 {
 	int i = 0;
 
+	if (str == 0)
+		return (0);
 	while (str[i] != '\0')
 		i++;
 	return (i);
