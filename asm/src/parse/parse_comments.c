@@ -13,13 +13,13 @@
 int skip_comments(int fd, char **line, char *sep)
 {
 	char const comment_char[2] = {COMMENT_CHAR, '\0'};
-	char *new_line;
+	char *tmp_line;
 
 	while (*line != NULL) {
 		if (!is_comment(*line, sep)) {
-			new_line = get_next_word(line, comment_char);
-			//free(*line);
-			*line = new_line;
+			tmp_line = *line;
+			*line = get_next_word(line, comment_char);
+			free(tmp_line);
 			return (0);
 		}
 		free(*line);
