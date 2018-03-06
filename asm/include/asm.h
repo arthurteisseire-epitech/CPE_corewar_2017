@@ -9,6 +9,10 @@
 #define ASM_H
 
 #define FEND 42
+#define REV_BYTES(x)	((num & 0xff000000) >> 24) + \
+			((num & 0x00ff0000) >> 8) + \
+			((num & 0x0000ff00) << 8) + \
+			((num & 0x000000ff) << 24)
 
 typedef struct label {
 	char *label;
