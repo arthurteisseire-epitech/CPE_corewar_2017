@@ -7,12 +7,19 @@
 
 NAME	=	units
 CC	=	gcc
-DSRC	=	$(realpath ../src)/
-INC	=	$(realpath ../include)/
-DLIB	=	$(realpath ../lib/my)/
+ROOT	=	$(realpath ../..)/
+ASM	=	$(realpath ..)/
 DSRC_UT	=	$(realpath .)/
+INC	=	$(ASM)include/
+DLIB	=	$(ROOT)lib/my/
+DSRC	=	$(ASM)src/
+DINIT	=	$(DSRC)init/
 
-SRC	=	$(DSRC)file.c
+SRC	=	$(DSRC)asm.c \
+		$(DSRC)op.c \
+		$(DSRC)set_line.c \
+		$(DINIT)init_buffer.c
+		
 
 SRC_UT	=	$(SRC_UTD)tests.c
 

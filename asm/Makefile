@@ -16,6 +16,7 @@ DINIT	=	$(DSRC)init/
 SRC	=	$(DSRC)main.c \
 		$(DSRC)asm.c \
 		$(DSRC)set_line.c \
+		$(DSRC)op.c \
 		$(DINIT)init_buffer.c
 
 OBJ	=	$(SRC:.c=.o)
