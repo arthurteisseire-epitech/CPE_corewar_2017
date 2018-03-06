@@ -44,6 +44,8 @@ int set_line(line_t *line_data, char *line)
 
 	if (set_tokens(line_data, tokens) != 0 || tokens == NULL)
 		return (-1);
+	if (tokens[0] == NULL)
+		return (0);
 	line_data->label = is_label(tokens[0]);
 	return (0);
 }
