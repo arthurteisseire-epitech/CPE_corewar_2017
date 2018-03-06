@@ -6,6 +6,7 @@
 */
 
 #include <stdlib.h>
+#include "op.h"
 #include "my.h"
 #include "asm.h"
 
@@ -26,7 +27,7 @@ int is_comment(char *line, char *sep)
 
 	while (is_char_in_str(line[i], sep))
 		i++;
-	if (line[i] == '#' || line[i] == '\0')
+	if (line[i] == COMMENT_CHAR || line[i] == '\0')
 		return (1);
 	return (0);
 }
