@@ -8,18 +8,20 @@
 CC	=	gcc
 ROOT	=	$(realpath ..)/
 DSRC	=	$(realpath src)/
-DPARS	=	$(DSRC)/parse/
 INC	=	$(realpath include)/
 DTESTS	=	$(realpath tests)/
 DLIB	=	$(ROOT)lib/my/
 DINIT	=	$(DSRC)init/
+DPARSE	=	$(DSRC)parse/
 
 SRC	=	$(DSRC)main.c \
 		$(DSRC)asm.c \
 		$(DSRC)set_line.c \
 		$(DSRC)op.c \
 		$(DINIT)init_buffer.c \
-		$(DPARS)get_id_cmd.c \
+		$(DPARSE)get_id_cmd.c \
+		$(DPARSE)parse_comments.c
+
 OBJ	=	$(SRC:.c=.o)
 CFLAGS +=	-Wall -W -Wextra -I$(INC) -g
 LIB	=	my

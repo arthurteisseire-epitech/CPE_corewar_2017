@@ -8,6 +8,8 @@
 #ifndef ASM_H
 #define ASM_H
 
+#define FEND 42
+
 #ifndef SEPARATORS
 	#define SEPARATORS (char[3]){SEPARATOR_CHAR, ' ', '\t'}
 #endif
@@ -25,6 +27,7 @@ typedef struct token {
 
 typedef struct line {
 	int label;
+	int index;
 	int nb_bytes;
 	int nb_tokens;
 	token_t *tokens;
@@ -38,7 +41,10 @@ typedef struct buffer {
 } buffer_t;
 
 int my_asm(buffer_t *buffer, char *pathname);
+int store_and_check_line(int fd, buffer_t *buffer, int index);
 int set_line(line_t *line_data, char *line);
 void init_buffer(buffer_t *buffer);
+int skip_comments(int fd, char **line, char *separators);
+int is_comment(char *line, char *separators);
 
 #endif

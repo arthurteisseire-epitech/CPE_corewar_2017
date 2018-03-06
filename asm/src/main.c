@@ -6,10 +6,8 @@
 */
 
 #include "op.h"
-#include "op.c"
 #include "my.h"
 #include "asm.h"
-#include "op.h"
 
 static int check_args(int ac)
 {
@@ -48,5 +46,7 @@ int main(int ac, char **av)
 	for (int i = 1; i < ac; i++)
 		status = my_asm(&buffer, av[i]);
 	print_tokens(&buffer);
+	if (status == FEND)
+		return (0);
 	return (status);
 }
