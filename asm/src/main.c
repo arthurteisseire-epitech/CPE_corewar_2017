@@ -9,6 +9,8 @@
 #include "asm.h"
 #include "op.h"
 
+char const separators[3] = {SEPARATOR_CHAR, ' ', 't'};
+
 static int check_args(int ac)
 {
 	if (ac == 1) {
