@@ -11,13 +11,15 @@ DSRC	=	$(realpath src)/
 INC	=	$(realpath include)/
 DTESTS	=	$(realpath tests)/
 DLIB	=	$(ROOT)lib/my/
+DINIT	=	$(DSRC)init/
 
 SRC	=	$(DSRC)main.c \
-		$(DSRC)asm.c 	\
-		$(DSRC)set_line.c
+		$(DSRC)asm.c \
+		$(DSRC)set_line.c \
+		$(DINIT)init_buffer.c
 
 OBJ	=	$(SRC:.c=.o)
-CFLAGS +=	-Wall -W -Wextra -I$(INC)
+CFLAGS +=	-Wall -W -Wextra -I$(INC) -g
 LIB	=	my
 LIBS	=	-L$(DLIB) -l$(LIB)
 NAME	=	asm

@@ -34,9 +34,11 @@ typedef struct buffer {
 	line_t *line;
 	label_t *label;
 	int curr_byte;
+	int nb_lines;
 } buffer_t;
 
 int my_asm(buffer_t *buffer, char *pathname);
 int set_line(line_t *line_data, char *line);
+void init_buffer(buffer_t *buffer);
 
 #endif

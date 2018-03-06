@@ -16,13 +16,14 @@ int my_asm(buffer_t *buffer, char *pathname)
 	char *line = get_next_line(fd);
 	int index = 0;
 
-	buffer->line = NULL;
+	init_buffer(buffer);
 	while (line != NULL) {
 		buffer->line = realloc(buffer->line, sizeof(line_t) * (index + 1));
 		if (buffer->line == NULL)
 			return (-1);
 		if (set_line(&buffer->line[index], line) == -1)
 			return (-1);
+		buffer->nb_lines += 1;
 		free(line);
 		line = get_next_line(fd);
 		index++;
