@@ -10,10 +10,6 @@
 
 #define FEND 42
 
-#ifndef SEPARATORS
-	#define SEPARATORS (char[3]){SEPARATOR_CHAR, ' ', '\t'}
-#endif
-
 typedef struct label {
 	char *label;
 	int line;
@@ -46,5 +42,7 @@ int set_line(line_t *line_data, char *line);
 void init_buffer(buffer_t *buffer);
 int skip_comments(int fd, char **line, char *separators);
 int is_comment(char *line, char *separators);
+
+extern char const separators[3];
 
 #endif

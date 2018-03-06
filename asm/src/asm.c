@@ -13,7 +13,7 @@
 int my_asm(buffer_t *buffer, char *pathname)
 {
 	int fd = open(pathname, O_RDONLY);
-	int status;
+	int status = 0;
 	int index = 0;
 
 	if (fd == -1)

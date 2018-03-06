@@ -9,26 +9,24 @@
 #include "my.h"
 #include "asm.h"
 
-int skip_comments(int fd, char **line, char *separators)
+int skip_comments(int fd, char **line, char *sep)
 {
-	if (*line == NULL)
-		return (FEND);
-	while (is_comment(*line, separators)) {
-		if (*line == NULL)
-			return (FEND);
+	while (*line != NULL) {
+		if (!is_comment(*line, sep))
+			return (0);
 		free(*line);
 		*line = get_next_line(fd);
 	}
-	return (0);
+	return (FEND);
 }
 
-int is_comment(char *line, char *separators)
+int is_comment(char *line, char *sep)
 {
 	int i = 0;
 
-	while (is_char_in_str(line[i], separators))
+	while (is_char_in_str(line[i], sep))
 		i++;
-	if (line[i] == '#')
+	if (line[i] == '#' || line[i] == '\0')
 		return (1);
 	return (0);
 }

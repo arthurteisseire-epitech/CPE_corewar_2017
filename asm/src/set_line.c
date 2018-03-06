@@ -2,13 +2,13 @@
 ** EPITECH PROJECT, 2018
 ** ASM corewar
 ** File description:
-** set token in 
+** set token in
 */
 
-#include "asm.h"
-#include "op.h"
-#include "my.h"
 #include <stdlib.h>
+#include "op.h"
+#include "asm.h"
+#include "my.h"
 
 static int is_label(char *line)
 {
@@ -40,12 +40,10 @@ static int set_tokens(line_t *line, char **tokens)
 
 int set_line(line_t *line_data, char *line)
 {
-	char **tokens = split(line, SEPARATORS);
+	char **tokens = split(line, separators);
 
-	if (set_tokens(line_data, tokens) != 0 || tokens == NULL)
+	if (tokens == NULL || set_tokens(line_data, tokens) != 0)
 		return (-1);
-	if (tokens[0] == NULL)
-		return (0);
 	line_data->label = is_label(tokens[0]);
 	return (0);
 }

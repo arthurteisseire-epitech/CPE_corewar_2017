@@ -19,7 +19,7 @@ SRC	=	$(DSRC)asm.c \
 		$(DSRC)op.c \
 		$(DSRC)set_line.c \
 		$(DINIT)init_buffer.c
-		
+
 
 SRC_UT	=	$(SRC_UTD)tests.c
 
