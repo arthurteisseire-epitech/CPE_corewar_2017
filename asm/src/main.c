@@ -5,6 +5,8 @@
 ** Rémi BISSON
 */
 
+#include "op.h"
+#include "op.c"
 #include "my.h"
 #include "asm.h"
 #include "op.h"
