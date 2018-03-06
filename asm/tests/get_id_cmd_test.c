@@ -7,8 +7,11 @@
 
 #include <criterion/criterion.h>
 #include <criterion/redirect.h>
+#include "asm.h"
 #include "parse.h"
 #include "op.h"
+
+char const separators[3] = {SEPARATOR_CHAR, ' ', '\t'};
 
 Test(get_id_cmd, )
 {

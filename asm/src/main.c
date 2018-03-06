@@ -6,9 +6,10 @@
 */
 
 #include "op.h"
-#include "op.c"
 #include "my.h"
 #include "asm.h"
+
+char const separators[3] = {SEPARATOR_CHAR, ' ', 't'};
 
 static int check_args(int ac)
 {
@@ -17,6 +18,24 @@ static int check_args(int ac)
 		return (-1);
 	}
 	return (0);
+}
+
+#include <stdio.h>
+static void print_tokens(buffer_t *buffer)
+{
+	int i = 0;
+	int j = 0;
+	line_t *line;
+
+	while (i < buffer->nb_lines) {
+		j = 0;
+		line = &buffer->line[i];
+		while (j < line->nb_tokens) {
+			printf("LINE[%d] -> TOKEN[%d] : %s\n", i, j, line->tokens[j].str);
+			j++;
+		}
+		i++;
+	}
 }
 
 int main(int ac, char **av)
@@ -28,5 +47,8 @@ int main(int ac, char **av)
 		return (84);
 	for (int i = 1; i < ac; i++)
 		status = my_asm(&buffer, av[i]);
+	print_tokens(&buffer);
+	if (status == FEND)
+		return (0);
 	return (status);
 }
