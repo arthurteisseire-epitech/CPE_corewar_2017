@@ -1,5 +1,5 @@
 /*
-** op.c for  korewar
+** op.c for  corewar
 **
 ** Made by Astek
 ** Login   <astek@epitech.net>
