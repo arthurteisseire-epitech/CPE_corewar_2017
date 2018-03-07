@@ -7,6 +7,8 @@
 
 #include <stdlib.h>
 #include "asm.h"
+#include "buffer.h"
+#include "line.h"
 
 void init_buffer(buffer_t *buffer)
 {

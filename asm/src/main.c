@@ -8,6 +8,9 @@
 #include "op.h"
 #include "my.h"
 #include "asm.h"
+#include "buffer.h"
+#include "line.h"
+#include "token.h"
 
 char const separators[3] = {SEPARATOR_CHAR, ' ', 't'};
 

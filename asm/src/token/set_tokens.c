@@ -8,6 +8,8 @@
 #include <stdlib.h>
 #include "my.h"
 #include "asm.h"
+#include "line.h"
+#include "token.h"
 
 int set_tokens(line_t *line, char **tokens)
 {

@@ -4,9 +4,9 @@
 ** File description:
 ** Ozz
 */
+
 #include "my.h"
 #include "op.h"
-#include <stdio.h>
 
 int is_opt_end(op_t opt)
 {

@@ -7,6 +7,7 @@
 
 #include "op.h"
 #include "asm.h"
+#include "token.h"
 
 static char const type[] = {REG_CHAR, DIRECT_CHAR, '\0'};
 

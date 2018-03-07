@@ -9,6 +9,8 @@
 #include "asm.h"
 #include "op.h"
 #include "my.h"
+#include "line.h"
+#include "token.h"
 
 static char const index[NB_INDEX][6] = {
 	"live",

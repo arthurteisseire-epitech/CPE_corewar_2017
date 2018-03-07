@@ -7,6 +7,8 @@
 
 #include "op.h"
 #include "asm.h"
+#include "line.h"
+#include "token.h"
 
 void set_token_bytes(line_t *line, token_t *token)
 {

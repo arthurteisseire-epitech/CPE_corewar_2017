@@ -10,6 +10,8 @@
 #include "my.h"
 #include "asm.h"
 #include "parse.h"
+#include "buffer.h"
+#include "line.h"
 
 int my_asm(buffer_t *buffer, char *pathname)
 {
