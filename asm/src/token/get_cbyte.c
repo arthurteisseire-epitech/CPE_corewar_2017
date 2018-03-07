@@ -5,6 +5,7 @@
 ** by Arthur Teisseire
 */
 
+#include "op.h"
 #include "asm.h"
 
 static char const type[] = {REG_CHAR, DIRECT_CHAR, '\0'};

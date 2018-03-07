@@ -5,9 +5,10 @@
 ** by Arthur Teisseire
 */
 
+#include <stdlib.h>
 #include "asm.h"
 
-static char const no_cbyte_inst[NB_NOCBYTE][5] = {
+static const char no_cbyte_inst[NB_NOCBYTE][6] = {
 	"live",
 	"zjmp",
 	"fork",

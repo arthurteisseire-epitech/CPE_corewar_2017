@@ -23,8 +23,9 @@ SRC	=	$(DSRC)main.c \
 		$(DPARSE)skip_comments.c \
 		$(DBUFFER)init_buffer.c \
 		$(DLINE)set_line.c \
-		$(DLINE)get_line_bytes.c \
-		$(DTOKEN)get_token_bytes.c \
+		$(DLINE)set_line_bytes.c \
+		$(DTOKEN)set_token_bytes.c \
+		$(DTOKEN)set_tokens.c \
 		$(DTOKEN)get_cbyte.c
 
 OBJ	=	$(SRC:.c=.o)
