@@ -20,6 +20,7 @@ SRC	=	$(DSRC)main.c \
 		$(DSRC)op.c \
 		$(DINIT)init_buffer.c \
 		$(DPARSE)get_id_cmd.c \
+		$(DPARSE)is_line_valid.c \
 		$(DPARSE)parse_comments.c
 
 OBJ	=	$(SRC:.c=.o)

@@ -25,10 +25,10 @@
 #define SYNTAX_ERROR "Syntax error."
 
 //Problems with instructions
-#define INVALID_INSTRUCTION "Invalid instruction."
-#define WRONG_INSTRUCT_ARG "The argument given to the instruction is invalid."
-#define WRONG_NB_ARGS "Too many arguments given to the instruction."
-#define WRONG_REGISTER_NB "Invalid register number."
-#define WRONG_LABEL "Undefined label."
+#define INVALID_INSTRUCTION "Invalid instruction.\n"
+#define WRONG_INSTRUCT_ARG "The argument given to the instruction is invalid.\n"
+#define WRONG_NB_ARGS "Too many arguments given to the instruction.\n"
+#define WRONG_REGISTER_NB "Invalid register number.\n"
+#define WRONG_LABEL "Undefined label.\n"
 
 #endif
