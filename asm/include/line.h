@@ -8,6 +8,7 @@
 #ifndef LINE_H
 #define LINE_H
 
+typedef struct buffer buffer_t;
 typedef struct token token_t;
 
 typedef struct line {
@@ -19,6 +20,8 @@ typedef struct line {
 	token_t *tokens;
 } line_t;
 
+int is_index(line_t *line);
+int is_label(char *line);
 int store_and_check_line(int fd, buffer_t *buffer, int index);
 int set_line(line_t *line_data, char *line);
 

@@ -22,7 +22,7 @@ static char const index[NB_INDEX][6] = {
 	"lldi"
 };
 
-static int is_index(line_t *line)
+int is_index(line_t *line)
 {
 	int i = 0;
 
@@ -33,7 +33,7 @@ static int is_index(line_t *line)
 	}
 	return (0); }
 
-static int is_label(char *line)
+int is_label(char *line)
 {
 	int i = 0;
 
