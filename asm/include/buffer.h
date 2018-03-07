@@ -16,12 +16,14 @@ typedef struct label {
 } label_t;
 
 typedef struct buffer {
-	line_t *line;
+	line_t *lines;
 	label_t *label;
-	int curr_byte;
 	int nb_lines;
+	int nb_bytes;
+	int curr_byte;
 } buffer_t;
 
 void init_buffer(buffer_t *buffer);
+void set_buffer_bytes(buffer_t *buffer);
 
 #endif

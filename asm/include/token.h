@@ -16,7 +16,7 @@ typedef struct token {
 	int nb_bytes;
 } token_t;
 
-void set_token_bytes(line_t *line, token_t *token);
 int set_tokens(line_t *line, char **tokens);
+void set_token_bytes(line_t *line, token_t *token);
 
 #endif

@@ -22,6 +22,7 @@ SRC	=	$(DSRC)main.c \
 		$(DPARSE)get_id_cmd.c \
 		$(DPARSE)skip_comments.c \
 		$(DBUFFER)init_buffer.c \
+		$(DBUFFER)set_buffer_bytes.c \
 		$(DLINE)set_line.c \
 		$(DLINE)set_line_bytes.c \
 		$(DTOKEN)set_token_bytes.c \

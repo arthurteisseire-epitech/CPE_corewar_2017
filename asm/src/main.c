@@ -32,7 +32,7 @@ static void print_tokens(buffer_t *buffer)
 
 	while (i < buffer->nb_lines) {
 		j = 0;
-		line = &buffer->line[i];
+		line = &buffer->lines[i];
 		while (j < line->nb_tokens) {
 			printf("LINE[%d] -> TOKEN[%d] : %s\n", i, j, line->tokens[j].str);
 			j++;

@@ -12,7 +12,7 @@
 
 void init_buffer(buffer_t *buffer)
 {
-	buffer->line = NULL;
+	buffer->lines = NULL;
 	buffer->nb_lines = 0;
 	buffer->curr_byte = 0;
 }
