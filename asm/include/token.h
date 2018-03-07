@@ -12,7 +12,6 @@ typedef struct line line_t;
 
 typedef struct token {
 	char *str;
-	int type;
 	int cbyte;
 	int nb_bytes;
 } token_t;
