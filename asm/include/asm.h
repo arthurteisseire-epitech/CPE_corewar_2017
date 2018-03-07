@@ -9,7 +9,7 @@
 #define ASM_H
 
 #define FEND 42
-#define REV_BYTES(x)	((num & 0xff000000) >> 24) + \
+#define REV_BYTES(num)	((num & 0xff000000) >> 24) + \
 			((num & 0x00ff0000) >> 8) + \
 			((num & 0x0000ff00) << 8) + \
 			((num & 0x000000ff) << 24)
@@ -23,6 +23,7 @@ typedef struct token {
 	char *str;
 	int type;
 	int cbyte;
+	int nb_bytes;
 } token_t;
 
 typedef struct line {
@@ -44,8 +45,6 @@ int my_asm(buffer_t *buffer, char *pathname);
 int store_and_check_line(int fd, buffer_t *buffer, int index);
 int set_line(line_t *line_data, char *line);
 void init_buffer(buffer_t *buffer);
-int skip_comments(int fd, char **line, char *separators);
-int is_comment(char *line, char *separators);
 
 extern char const separators[3];
 

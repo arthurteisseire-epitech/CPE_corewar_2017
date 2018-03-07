@@ -9,6 +9,7 @@
 #include <fcntl.h>
 #include "my.h"
 #include "asm.h"
+#include "parse.h"
 
 int my_asm(buffer_t *buffer, char *pathname)
 {
@@ -42,5 +43,5 @@ int store_and_check_line(int fd, buffer_t *buffer, int index)
 	buffer->nb_lines += 1;
 	if (line != NULL)
 		free(line);
-	return (1);
+	return (0);
 }
