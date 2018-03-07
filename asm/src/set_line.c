@@ -16,7 +16,7 @@ static int is_label(char *line)
 
 	while (is_char_in_str(line[i], LABEL_CHARS))
 		i++;
-	if (line[i] == LABEL_CHAR)
+	if (line[i] == LABEL_CHAR && line[i + 1] == '\0')
 		return (1);
 	return (0);
 }
