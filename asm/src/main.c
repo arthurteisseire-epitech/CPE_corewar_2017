@@ -51,6 +51,7 @@ int main(int ac, char **av)
 	for (int i = 1; i < ac; i++)
 		status = my_asm(&buffer, av[i]);
 	print_tokens(&buffer);
+	printf("NB_BYTES: %d\n", buffer.nb_bytes);
 	if (status == FEND)
 		return (0);
 	return (status);
