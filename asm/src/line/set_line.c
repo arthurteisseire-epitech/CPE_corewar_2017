@@ -51,6 +51,7 @@ int set_line(line_t *line_data, char *line)
 
 	if (tokens == NULL || set_tokens(line_data, tokens) != 0)
 		return (-1);
+	set_line_bytes(line_data);
 	line_data->is_label = is_label(tokens[0]);
 	line_data->is_index = is_index(line_data);
 	return (0);
