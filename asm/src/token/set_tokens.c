@@ -23,7 +23,10 @@ int set_tokens(line_t *line, char **tokens)
 	}
 	while (i < line->nb_tokens) {
 		line->tokens[i].str = tokens[i];
-		set_token_bytes(line, &line->tokens[i]);
+		if (i >= 1)
+			set_token_bytes(line, &line->tokens[i]);
+		else
+			line->tokens[i].nb_bytes = 1;
 		i++;
 	}
 	return (0);
