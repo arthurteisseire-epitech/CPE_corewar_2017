@@ -31,8 +31,9 @@ SRC	=	$(DSRC)asm.c \
 		$(DTOKEN)set_tokens.c \
 		$(DTOKEN)get_cbyte.c
 
-SRC_UT	=	$(SRC_UTD)get_id_cmd_test.c \
-		$(SRC_UTD)set_token_bytes.c
+SRC_UT	=	$(SRC_UTD)test_get_id_cmd.c \
+		$(SRC_UTD)test_set_token_bytes.c \
+		$(SRC_UTD)test_is_index.c
 
 OBJ	=	$(SRC:.c=.o) $(SRC_UT:.c=.o)
 CFLAGS +=	-Wall -W -Wextra -I$(INC) --coverage

@@ -31,7 +31,8 @@ int is_index(line_t *line)
 			return (1);
 		i++;
 	}
-	return (0); }
+	return (0);
+}
 
 int is_label(char *line)
 {
