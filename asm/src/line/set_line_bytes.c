@@ -22,8 +22,8 @@ int is_cbyte(line_t *line)
 {
 	for (int i = 0; i < NB_NOCBYTE; i++)
 		if (my_strcmp(line->tokens[0].str, no_cbyte_inst[i]) == 0)
-			return (1);
-	return (0);
+			return (0);
+	return (1);
 }
 
 void set_line_bytes(line_t *line)
