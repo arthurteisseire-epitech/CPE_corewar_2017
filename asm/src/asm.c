@@ -8,6 +8,7 @@
 #include <stdlib.h>
 #include <fcntl.h>
 #include "my.h"
+#include "op.h"
 #include "asm.h"
 #include "parse.h"
 #include "buffer.h"
@@ -18,19 +19,20 @@ int my_asm(buffer_t *buffer, char *pathname)
 	int fd = open(pathname, O_RDONLY);
 	int status = 0;
 	int index = 0;
+	header_t *header = malloc(sizeof(header_t));
 
 	if (fd == -1)
 		return (-1);
 	init_buffer(buffer);
 	while (status != FEND && status != -1) {
-		status = store_and_check_line(fd, buffer, index);
+		status = store_and_check_line(fd, buffer, index, header);
 		index++;
 	}
 	set_buffer_bytes(buffer);
 	return (status);
 }
 
-int store_and_check_line(int fd, buffer_t *buffer, int index)
+int store_and_check_line(int fd, buffer_t *buffer, int index, header_t *header)
 {
 	char *line;
 
@@ -41,6 +43,8 @@ int store_and_check_line(int fd, buffer_t *buffer, int index)
 	if (buffer->lines == NULL)
 		return (-1);
 	buffer->lines[index].index = index;
+	if (index < 2)
+		set_header(&buffer->lines[index], header);
 	if (set_line(buffer, &buffer->lines[index], line) == -1)
 		return (-1);
 	buffer->nb_lines += 1;

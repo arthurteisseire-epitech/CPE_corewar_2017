@@ -5,6 +5,8 @@
 ** by Arthur Teisseire
 */
 
+#include "op.h"
+
 #ifndef LINE_H
 #define LINE_H
 
@@ -22,8 +24,9 @@ typedef struct line {
 int is_index(line_t *line);
 int is_label(char *line);
 int is_cbyte(line_t *line);
-int store_and_check_line(int fd, buffer_t *buffer, int index);
+int store_and_check_line(int fd, buffer_t *buffer, int index, header_t *header);
 int set_line(buffer_t *buffer, line_t *line_data, char *line);
 void set_line_bytes(line_t *line);
+int set_header(line_t *line, header_t *header);
 
 #endif
