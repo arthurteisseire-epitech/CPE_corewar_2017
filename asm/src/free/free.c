@@ -12,7 +12,6 @@
 int free_token(token_t *token)
 {
 	if (token->str != NULL) {
-		printf("%s\n", token->str);
 		free(token->str);
 	}
 	return (0);

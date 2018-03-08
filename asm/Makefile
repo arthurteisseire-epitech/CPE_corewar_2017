@@ -20,17 +20,18 @@ DFREE	=	$(DSRC)free/
 SRC	=	$(DSRC)main.c \
 		$(DSRC)asm.c \
 		$(DSRC)op.c \
-		$(DPARSE)get_id_cmd.c \
-		$(DPARSE)skip_comments.c \
-		$(DBUFFER)init_buffer.c \
-		$(DBUFFER)set_buffer_bytes.c \
+		$(DFREE)free.c \
 		$(DLINE)set_line.c \
 		$(DLINE)set_line_bytes.c \
 		$(DTOKEN)set_token_bytes.c \
 		$(DTOKEN)set_tokens.c \
 		$(DTOKEN)init_tokens.c \
 		$(DTOKEN)get_cbyte.c \
-		$(DFREE)free.c
+		$(DBUFFER)init_buffer.c \
+		$(DBUFFER)set_buffer_bytes.c \
+		$(DPARSE)get_id_cmd.c \
+		$(DPARSE)skip_comments.c \
+		$(DPARSE)is_line_valid.c
 
 OBJ	=	$(SRC:.c=.o)
 CFLAGS +=	-Wall -W -Wextra -I$(INC) -g

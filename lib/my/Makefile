@@ -18,6 +18,7 @@ SRC	=	my_strlen.c \
 		my_strcmp.c \
 		my_strncmp.c \
 		my_str_isalphanum.c \
+		my_str_isnum.c \
 		my_strcpy.c \
 		my_strncpy.c \
 		my_strcat.c \
