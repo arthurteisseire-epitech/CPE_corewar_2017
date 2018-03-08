@@ -68,6 +68,8 @@ int is_line_valid(line_t *line)
 	int id_cmd = get_id_cmd(op_tab, line->tokens[0].str);
 	token_t *line_tk = line->tokens;
 
+	printf("OP_TAB : %s\n", op_tab[0].mnemonique);
+	printf("CMD : %s\n", line->tokens[0].str);
 	if (id_cmd == -1) {
 		my_puterror(INVALID_INSTRUCTION);
 		return (-1);

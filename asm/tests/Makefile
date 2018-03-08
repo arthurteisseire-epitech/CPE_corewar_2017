@@ -14,16 +14,15 @@ INC	=	$(ASM)include/
 DLIB	=	$(ROOT)lib/my/
 DSRC	=	$(ASM)src/
 DINIT	=	$(DSRC)init/
-DPARS	=	$(DSRC)parse/
+DPARSE	=	$(DSRC)parse/
 LIB	=	my
 
-SRC	=	$(DSRC)asm.c \
-		$(DSRC)op.c \
+SRC     =       $(DSRC)asm.c \
 		$(DSRC)set_line.c \
-		$(DPARS)get_id_cmd.c \
-		$(DPARS)parse_comments.c \
-		$(DINIT)init_buffer.c
-
+		$(DSRC)op.c \
+		$(DINIT)init_buffer.c \
+		$(DPARSE)get_id_cmd.c \
+		$(DPARSE)parse_comments.c
 
 SRC_UT	=	$(SRC_UTD)get_id_cmd_test.c
 
