@@ -17,8 +17,9 @@ typedef struct token {
 	int is_label;
 } token_t;
 
-void init_token(token_t *token);
+int init_tokens(line_t *line, char **tokens);
 int set_tokens(line_t *line, char **tokens);
+int set_token(line_t *line, int i);
 void set_token_bytes(line_t *line, token_t *token);
 
 #endif

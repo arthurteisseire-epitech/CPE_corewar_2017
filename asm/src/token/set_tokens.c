@@ -37,20 +37,19 @@ int set_tokens(line_t *line, char **tokens)
 {
 	int i = 0;
 
-	line->nb_tokens = my_arrlen(tokens);
-	line->tokens = malloc(sizeof(token_t) * line->nb_tokens);
-	if (line->tokens == NULL) {
-		free_array(tokens);
+	if (init_tokens(line, tokens) == -1)
 		return (-1);
-	}
-	//line->tokens[0].is_label = is_label(tokens[0]);
-	//printf("IS_LABEL : %d\n",line->tokens[0].is_label);
 	while (i < line->nb_tokens) {
-		init_token(&line->tokens[i]);
-		line->tokens[i].str = tokens[i];
-		line->is_index = is_index(line);
-		set_bytes(line, i);
+		set_token(line, i);
 		i++;
 	}
+	return (0);
+}
+
+int set_token(line_t *line, int i)
+{
+	line->tokens[0].is_label = is_label(line->tokens[0].str);
+	line->is_index = is_index(line);
+	set_bytes(line, i);
 	return (0);
 }
