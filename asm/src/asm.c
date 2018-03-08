@@ -43,10 +43,10 @@ int store_and_check_line(int fd, buffer_t *buffer, int index, header_t *header)
 	if (buffer->lines == NULL)
 		return (-1);
 	buffer->lines[index].index = index;
-	if (index < 2)
-		set_header(&buffer->lines[index], header);
 	if (set_line(buffer, &buffer->lines[index], line) == -1)
 		return (-1);
+	if (index < 2)
+		set_header(&buffer->lines[index], header);
 	buffer->nb_lines += 1;
 	if (line != NULL)
 		free(line);

@@ -33,7 +33,7 @@ SRC	=	$(DSRC)main.c \
 		$(DPARSE)get_id_cmd.c \
 		$(DPARSE)skip_comments.c \
 		$(DPARSE)is_line_valid.c \
-		$(DTOKEN)set_header.c 	 \
+		$(DSRC)set_header.c 	 \
 
 OBJ	=	$(SRC:.c=.o)
 CFLAGS +=	-Wall -W -Wextra -I$(INC) -g

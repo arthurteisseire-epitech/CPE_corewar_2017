@@ -5,8 +5,13 @@
 ** manage header
 */
 
+#include <stdlib.h>
+#include "parse.h"
 #include "my.h"
+#include "op.h"
+#include "line.h"
 #include "asm.h"
+#include "token.h"
 
 static int check_str(line_t *line)
 {
@@ -18,6 +23,7 @@ static int check_str(line_t *line)
 		return (-2);
 	else
 		return (0);
+	return (0);
 }
 
 static int set_name(line_t *line, header_t *header)
@@ -30,6 +36,7 @@ static int set_name(line_t *line, header_t *header)
 		free(name);
 		return (0);
 	}
+	return (-1);
 
 }
 
@@ -46,6 +53,7 @@ static int set_comment(line_t *line, header_t *header)
 		free(comment);
 		return (0);
 	}
+	return (-1);
 }
 
 int set_header(line_t *line, header_t *header)
