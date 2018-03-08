@@ -11,16 +11,24 @@ DSRC	=	$(realpath src)/
 INC	=	$(realpath include)/
 DTESTS	=	$(realpath tests)/
 DLIB	=	$(ROOT)lib/my/
-DINIT	=	$(DSRC)init/
 DPARSE	=	$(DSRC)parse/
+DBUFFER	=	$(DSRC)buffer/
+DLINE	=	$(DSRC)line/
+DTOKEN	=	$(DSRC)token/
 
 SRC	=	$(DSRC)main.c \
 		$(DSRC)asm.c \
-		$(DSRC)set_line.c \
 		$(DSRC)op.c \
-		$(DINIT)init_buffer.c \
 		$(DPARSE)get_id_cmd.c \
-		$(DPARSE)parse_comments.c
+		$(DPARSE)skip_comments.c \
+		$(DBUFFER)init_buffer.c \
+		$(DBUFFER)set_buffer_bytes.c \
+		$(DLINE)set_line.c \
+		$(DLINE)set_line_bytes.c \
+		$(DTOKEN)set_token_bytes.c \
+		$(DTOKEN)set_tokens.c \
+		$(DTOKEN)init_token.c \
+		$(DTOKEN)get_cbyte.c
 
 OBJ	=	$(SRC:.c=.o)
 CFLAGS +=	-Wall -W -Wextra -I$(INC) -g

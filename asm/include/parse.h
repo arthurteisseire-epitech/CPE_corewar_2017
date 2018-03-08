@@ -9,7 +9,9 @@
 
 typedef struct op_s op_t;
 
-int is_opt_end(op_t opt);
-int get_id_cmd(op_t *op_tab, char *cmd);
+int is_opt_end(op_t *opt);
+int get_id_cmd(char *cmd);
+int skip_comments(int fd, char **line, char *separators);
+int is_comment(char *line, char *separators);
 
 #endif
