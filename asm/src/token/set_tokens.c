@@ -6,10 +6,32 @@
 */
 
 #include <stdlib.h>
+#include "op.h"
 #include "my.h"
 #include "asm.h"
 #include "line.h"
 #include "token.h"
+
+int is_label(char *line)
+{
+	int i = 0;
+
+	while (is_char_in_str(line[i], LABEL_CHARS))
+		i++;
+	if (line[i] == LABEL_CHAR && line[i + 1] == '\0')
+		return (1);
+	return (0);
+}
+
+static void set_bytes(line_t *line, int i)
+{
+	if (i >= 1)
+		set_token_bytes(line, &line->tokens[i]);
+	else if (line->tokens[0].is_label == 1)
+		line->tokens[0].nb_bytes = 0;
+	else
+		line->tokens[0].nb_bytes = 1;
+}
 
 int set_tokens(line_t *line, char **tokens)
 {
@@ -21,12 +43,13 @@ int set_tokens(line_t *line, char **tokens)
 		free_array(tokens);
 		return (-1);
 	}
+	//line->tokens[0].is_label = is_label(tokens[0]);
+	//printf("IS_LABEL : %d\n",line->tokens[0].is_label);
 	while (i < line->nb_tokens) {
+		init_token(&line->tokens[i]);
 		line->tokens[i].str = tokens[i];
-		if (i >= 1)
-			set_token_bytes(line, &line->tokens[i]);
-		else
-			line->tokens[i].nb_bytes = 1;
+		line->is_index = is_index(line);
+		set_bytes(line, i);
 		i++;
 	}
 	return (0);

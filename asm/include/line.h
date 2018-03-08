@@ -16,7 +16,6 @@ typedef struct line {
 	int nb_bytes;
 	int nb_tokens;
 	int is_index;
-	int is_label;
 	token_t *tokens;
 } line_t;
 

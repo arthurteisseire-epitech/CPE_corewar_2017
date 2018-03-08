@@ -27,6 +27,7 @@ SRC	=	$(DSRC)main.c \
 		$(DLINE)set_line_bytes.c \
 		$(DTOKEN)set_token_bytes.c \
 		$(DTOKEN)set_tokens.c \
+		$(DTOKEN)init_token.c \
 		$(DTOKEN)get_cbyte.c
 
 OBJ	=	$(SRC:.c=.o)

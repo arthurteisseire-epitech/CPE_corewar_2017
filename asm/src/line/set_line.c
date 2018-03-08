@@ -34,17 +34,6 @@ int is_index(line_t *line)
 	return (0);
 }
 
-int is_label(char *line)
-{
-	int i = 0;
-
-	while (is_char_in_str(line[i], LABEL_CHARS))
-		i++;
-	if (line[i] == LABEL_CHAR && line[i + 1] == '\0')
-		return (1);
-	return (0);
-}
-
 int set_line(line_t *line_data, char *line)
 {
 	char **tokens = split(line, separators);
@@ -52,7 +41,5 @@ int set_line(line_t *line_data, char *line)
 	if (tokens == NULL || set_tokens(line_data, tokens) != 0)
 		return (-1);
 	set_line_bytes(line_data);
-	line_data->is_label = is_label(tokens[0]);
-	line_data->is_index = is_index(line_data);
 	return (0);
 }

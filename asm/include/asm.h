@@ -9,7 +9,7 @@
 #define ASM_H
 
 #define FEND 42
-#define NB_NOCBYTE 4
+#define NB_CBYTE 12
 #define NB_INDEX 7
 #define REG_CHAR 'r'
 #define REV_BYTES(num)	((num & 0xff000000) >> 24) + \

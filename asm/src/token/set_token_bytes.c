@@ -22,6 +22,6 @@ void set_token_bytes(line_t *line, token_t *token)
 	} else {
 		token->nb_bytes = 2;
 	}
-	if (line->is_label == 1)
+	if (token->is_label == 1)
 		token->nb_bytes = 0;
 }

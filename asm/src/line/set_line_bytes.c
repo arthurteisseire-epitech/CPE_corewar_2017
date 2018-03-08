@@ -11,19 +11,27 @@
 #include "line.h"
 #include "token.h"
 
-static const char no_cbyte_inst[NB_NOCBYTE][6] = {
-	"live",
-	"zjmp",
-	"fork",
-	"lfork"
+static const char cbyte_inst[NB_CBYTE][6] = {
+	"ld",
+	"st",
+	"add",
+	"sub",
+	"and",
+	"or",
+	"xor",
+	"ldi",
+	"sti",
+	"lld",
+	"lldi",
+	"aff"
 };
 
 int is_cbyte(line_t *line)
 {
-	for (int i = 0; i < NB_NOCBYTE; i++)
-		if (my_strcmp(line->tokens[0].str, no_cbyte_inst[i]) == 0)
-			return (0);
-	return (1);
+	for (int i = 0; i < NB_CBYTE; i++)
+		if (my_strcmp(line->tokens[0].str, cbyte_inst[i]) == 0)
+			return (1);
+	return (0);
 }
 
 void set_line_bytes(line_t *line)
