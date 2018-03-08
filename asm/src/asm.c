@@ -9,6 +9,9 @@
 #include <fcntl.h>
 #include "my.h"
 #include "asm.h"
+#include "parse.h"
+#include "buffer.h"
+#include "line.h"
 
 int my_asm(buffer_t *buffer, char *pathname)
 {
@@ -23,6 +26,7 @@ int my_asm(buffer_t *buffer, char *pathname)
 		status = store_and_check_line(fd, buffer, index);
 		index++;
 	}
+	set_buffer_bytes(buffer);
 	return (status);
 }
 
@@ -33,14 +37,14 @@ int store_and_check_line(int fd, buffer_t *buffer, int index)
 	line = get_next_line(fd);
 	if (skip_comments(fd, &line, " \t") == FEND)
 		return (FEND);
-	buffer->line = realloc(buffer->line, sizeof(line_t) * (index + 1));
-	if (buffer->line == NULL)
+	buffer->lines = realloc(buffer->lines, sizeof(line_t) * (index + 1));
+	if (buffer->lines == NULL)
 		return (-1);
-	buffer->line[index].index = index;
-	if (set_line(&buffer->line[index], line) == -1)
+	buffer->lines[index].index = index;
+	if (set_line(&buffer->lines[index], line) == -1)
 		return (-1);
 	buffer->nb_lines += 1;
 	if (line != NULL)
 		free(line);
-	return (1);
+	return (0);
 }

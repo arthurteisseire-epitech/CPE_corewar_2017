@@ -7,10 +7,12 @@
 
 #include <stdlib.h>
 #include "asm.h"
+#include "buffer.h"
+#include "line.h"
 
 void init_buffer(buffer_t *buffer)
 {
-	buffer->line = NULL;
+	buffer->lines = NULL;
 	buffer->nb_lines = 0;
 	buffer->curr_byte = 0;
 }
