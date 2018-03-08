@@ -30,9 +30,9 @@ void put_err_asm(char *error, int line)
 	char *nb_line = my_itoa(line);
 
 	put_or_init_err(NULL, 0);
-	my_puterror("line ")
+	my_puterror("line ");
 	my_puterror(nb_line);
-	free(line);
+	free(nb_line);
 	my_puterror(":");
 	my_puterror(error);
 	my_puterror("\n");

@@ -20,6 +20,7 @@ DFREE	=	$(DSRC)free/
 SRC	=	$(DSRC)main.c \
 		$(DSRC)asm.c \
 		$(DSRC)op.c \
+		$(DSRC)put_err_asm.c \
 		$(DFREE)free.c \
 		$(DLINE)set_line.c \
 		$(DLINE)set_line_bytes.c \

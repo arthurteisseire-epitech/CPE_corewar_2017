@@ -12,6 +12,7 @@
 #include "line.h"
 #include "token.h"
 #include "free.h"
+#include "errors.h"
 
 char const separators[3] = {SEPARATOR_CHAR, ' ', 't'};
 
