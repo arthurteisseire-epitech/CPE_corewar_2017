@@ -15,6 +15,7 @@ DPARSE	=	$(DSRC)parse/
 DBUFFER	=	$(DSRC)buffer/
 DLINE	=	$(DSRC)line/
 DTOKEN	=	$(DSRC)token/
+DFREE	=	$(DSRC)free/
 
 SRC	=	$(DSRC)main.c \
 		$(DSRC)asm.c \
@@ -28,7 +29,8 @@ SRC	=	$(DSRC)main.c \
 		$(DTOKEN)set_token_bytes.c \
 		$(DTOKEN)set_tokens.c \
 		$(DTOKEN)init_tokens.c \
-		$(DTOKEN)get_cbyte.c
+		$(DTOKEN)get_cbyte.c \
+		$(DFREE)free.c
 
 OBJ	=	$(SRC:.c=.o)
 CFLAGS +=	-Wall -W -Wextra -I$(INC) -g

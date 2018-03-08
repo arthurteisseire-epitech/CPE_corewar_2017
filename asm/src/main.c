@@ -11,6 +11,7 @@
 #include "buffer.h"
 #include "line.h"
 #include "token.h"
+#include "free.h"
 
 char const separators[3] = {SEPARATOR_CHAR, ' ', 't'};
 
@@ -54,6 +55,7 @@ int main(int ac, char **av)
 		print_tokens(&buffer);
 		printf("NB_BYTES: %d\n", buffer.nb_bytes);
 	}
+	free_buffer(&buffer);
 	if (status == FEND)
 		return (0);
 	return (status);
