@@ -48,8 +48,10 @@ int main(int ac, char **av)
 
 	if (check_args(ac) == -1)
 		return (84);
-	for (int i = 1; i < ac; i++)
+	for (int i = 1; i < ac; i++) {
+		put_or_init_err(av, i);
 		status = my_asm(&buffer, av[i]);
+	}
 	if (status != -1) {
 		print_tokens(&buffer);
 		printf("NB_BYTES: %d\n", buffer.nb_bytes);
