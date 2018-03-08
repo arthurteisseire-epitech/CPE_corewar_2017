@@ -13,6 +13,8 @@
 void init_buffer(buffer_t *buffer)
 {
 	buffer->lines = NULL;
+	buffer->labels = NULL;
 	buffer->nb_lines = 0;
 	buffer->curr_byte = 0;
+	buffer->nb_labels = 0;
 }

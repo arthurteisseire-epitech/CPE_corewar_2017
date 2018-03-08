@@ -36,7 +36,7 @@ int is_cbyte(line_t *line)
 
 void set_line_bytes(line_t *line)
 {
-	line->nb_bytes = is_cbyte(line);
+	line->nb_bytes = is_cbyte(line) + 1;
 	for (int i = 0; i < line->nb_tokens; i++)
 		line->nb_bytes += line->tokens[i].nb_bytes;
 }

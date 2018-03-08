@@ -11,15 +11,16 @@
 typedef struct line line_t;
 
 typedef struct label {
-	char *label;
+	char *str;
 	int line;
 } label_t;
 
 typedef struct buffer {
 	line_t *lines;
-	label_t *label;
+	label_t *labels;
 	int nb_lines;
 	int nb_bytes;
+	int nb_labels;
 	int curr_byte;
 } buffer_t;
 
