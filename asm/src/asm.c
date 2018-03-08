@@ -29,7 +29,7 @@ int my_asm(buffer_t *buffer, char *pathname)
 		index++;
 	}
 	set_buffer_bytes(buffer);
-	write(open("test.cor", O_WRONLY), *header, sizeof(header_t));
+	write(open("./test.cor", O_WRONLY), header, sizeof(header_t));
 	return (status);
 }
 
