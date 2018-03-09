@@ -11,7 +11,7 @@ DSRC	=	$(realpath src)/
 INC	=	$(realpath include)/
 DTESTS	=	$(realpath tests)/
 DLIB	=	$(ROOT)lib/my/
-DPARSE	=	$(DSRC)parse/
+PARSE	=	$(DSRC)parse/
 DBUFFER	=	$(DSRC)buffer/
 DLINE	=	$(DSRC)line/
 DTOKEN	=	$(DSRC)token/
@@ -30,6 +30,7 @@ SRC	=	$(DSRC)main.c \
 		$(DBUFFER)init_buffer.c \
 		$(DBUFFER)set_buffer_bytes.c \
 		$(DPARSE)get_id_cmd.c \
+		$(DPARSE)label.c \
 		$(DPARSE)skip_comments.c \
 		$(DPARSE)is_line_valid.c
 
