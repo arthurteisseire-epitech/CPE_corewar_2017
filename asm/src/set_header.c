@@ -55,6 +55,10 @@ static int set_comment(line_t *line, header_t *header)
 		put_err_asm(MISPLACED_COMMENT, line->index);
 	}
 	else if (my_strcmp(COMMENT_CMD_STRING, line->tokens[0].str) == 0) {
+		if (line->nb_tokens == 1) {
+			put_err_asm(EMPTY_COMMENT, line->index);
+			return (-1);
+		}
 		comment = get_next_word(&line->tokens[1].str, "\"");
 		my_strcpy(header->prog_name, comment);
 		free(comment);
