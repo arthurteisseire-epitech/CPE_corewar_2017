@@ -7,6 +7,7 @@
 
 #include <stdlib.h>
 #include "parse.h"
+#include "buffer.h"
 #include "my.h"
 #include "op.h"
 #include "line.h"
@@ -29,8 +30,8 @@ static int check_header(char *name, char *comment)
 		put_err_asm(INVALID_INSTRUCTION);
 		return (-1);
 	}
-	if ((my_strcmp(comment_arr[0], COMMENT_CMD_STRING != 0 || my_strcmp(comment_arr[0], NAME_CMD_STRING) != 0) && get_id_cmd(comment_arr[0]) == -1)) {
-		real_index(1);
+	if (((my_strcmp(comment_arr[0], COMMENT_CMD_STRING) != 0 || my_strcmp(comment_arr[0], NAME_CMD_STRING) != 0) && get_id_cmd(comment_arr[0]) == -1)) {
+		true_index(1);
 		put_err_asm(INVALID_INSTRUCTION);
 		return (-1);
 	}
@@ -46,12 +47,12 @@ static int check_header(char *name, char *comment)
 		put_err_asm(MISPLACED_COMMENT);
 		return (-1);
 	}
-	if (my_arrlen(name_arr) > 2 || (my_arrlen(name_arr > 1) && (name_arr[1][0] != '"' || name_arr[1][my_strlen(name_arr[1]) - 1] != '"'))) {
-		put_err_asm(SYNTAX_ERROR),
+	if (my_arrlen(name_arr) > 2 || (my_arrlen(name_arr) > 1 && (name_arr[1][0] != '"' || name_arr[1][my_strlen(name_arr[1]) - 1] != '"'))) {
+		put_err_asm(SYNTAX_ERROR);
 		return (-1);
 	}
-	if (my_arrlen(comment_arr) > 2  || (my_arrlen(comment_arr > 1) && (comment_arr[1][0] != '"' || comment_arr[1][my_strlen(comment_arr[1]) - 1] != '"'))) {
-		real_index(1);
+	if (my_arrlen(comment_arr) > 2  || (my_arrlen(comment_arr) > 1 && (comment_arr[1][0] != '"' || comment_arr[1][my_strlen(comment_arr[1]) - 1] != '"'))) {
+		true_index(1);
 		put_err_asm(SYNTAX_ERROR);
 		return (-1);
 	}

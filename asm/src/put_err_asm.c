@@ -26,9 +26,17 @@ void put_or_init_err(char **av_init, int index_arg)
 	}
 }
 
-void put_err_asm(char *error, int line)
+int true_index(int i)
 {
-	char *nb_line = my_itoa(line + 1);
+	static int index;
+
+	index += i;
+	return (index);
+}
+
+void put_err_asm(char *error)
+{
+	char *nb_line = my_itoa(true_index(0));
 
 	put_or_init_err(NULL, 0);
 	my_puterror("line ");

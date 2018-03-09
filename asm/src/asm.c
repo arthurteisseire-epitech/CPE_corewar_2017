@@ -16,18 +16,15 @@ int my_asm(char *pathname)
 	int fd = open(pathname, O_RDONLY);
 	int status;
 
+	if (fd < 1)
+		return (-1);
 	set_header(&header, fd);
 	set_buffer(&buffer, fd);
 	status = set_binary(&buffer);
-	if (status == 0)
-		write_binary(&buffer);
+//	if (status == 0)
+//		write_binary(&buffer);
 	destroy(&buffer);
 	return (status);
-}
-
-int set_header(header_t *header, int fd)
-{
-
 }
 
 int set_buffer(buffer_t *buffer, int fd)
@@ -47,7 +44,7 @@ int set_binary(buffer_t *buffer)
 	}
 }
 
-int write_binary(buffer_t *buffer)
-{
+//int write_binary(buffer_t *buffer)
+//{
 
-}
+//}
