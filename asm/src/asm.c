@@ -19,17 +19,17 @@ int my_asm(buffer_t *buffer, char *pathname)
 	int fd = open(pathname, O_RDONLY);
 	int status = 0;
 	int index = 0;
-	header_t *header = malloc(sizeof(header_t));
+	header_t header;
 
 	if (fd == -1)
 		return (-1);
 	init_buffer(buffer);
 	while (status != FEND && status != -1) {
-		status = store_and_check_line(fd, buffer, index, header);
+		status = store_and_check_line(fd, buffer, index, &header);
 		index++;
 	}
 	set_buffer_bytes(buffer);
-	write(open("./test.cor", O_WRONLY), header, sizeof(header_t));
+	write(open("./test.cor", O_WRONLY), &header, sizeof(header_t));
 	return (status);
 }
 

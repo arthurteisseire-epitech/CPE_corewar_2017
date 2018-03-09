@@ -24,6 +24,7 @@ SRC	=	$(DSRC)main.c \
 		$(DFREE)free.c \
 		$(DLINE)set_line.c \
 		$(DLINE)set_line_bytes.c \
+		$(DLINE)file_line.c \
 		$(DTOKEN)set_token_bytes.c \
 		$(DTOKEN)set_tokens.c \
 		$(DTOKEN)init_tokens.c \
