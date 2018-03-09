@@ -29,7 +29,7 @@ int my_asm(buffer_t *buffer, char *pathname)
 		index++;
 	}
 	set_buffer_bytes(buffer);
-	write(open("./test.cor", O_WRONLY), &header, sizeof(header_t));
+	//write(open("./test.cor", O_WRONLY), &header, sizeof(header_t));
 	return (status);
 }
 
@@ -48,7 +48,7 @@ int store_and_check_line(int fd, buffer_t *buffer, int index, header_t *header)
 		return (-1);
 	if (index < 2)
 		if (set_header(&buffer->lines[index], header) == -1)
-			printf("conard\n");
+			my_putstr("connard\n");
 	buffer->nb_lines += 1;
 	if (line != NULL)
 		free(line);

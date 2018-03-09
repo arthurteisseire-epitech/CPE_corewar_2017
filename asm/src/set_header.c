@@ -13,6 +13,7 @@
 #include "asm.h"
 #include "token.h"
 
+#include <stdio.h>
 static int check_str(line_t *line)
 {
 	if ((my_strcmp(NAME_CMD_STRING, line->tokens[0].str) != 0 && my_strcmp(COMMENT_CMD_STRING, line->tokens[0].str) != 0) && get_id_cmd(line->tokens[0].str) == -1) {
@@ -45,7 +46,7 @@ static int set_comment(line_t *line, header_t *header)
 	char *comment;
 
 	if (my_strcmp(NAME_CMD_STRING, line->tokens[0].str) == 0){
-		printf("noob\n");
+		my_putstr("noob\n");
 	}
 	else if (my_strcmp(COMMENT_CMD_STRING, line->tokens[0].str) == 0) {
 		comment = get_next_word(&line->tokens[1].str, "\"");

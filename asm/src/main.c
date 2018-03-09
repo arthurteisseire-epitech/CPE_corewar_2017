@@ -43,6 +43,12 @@ static void print_tokens(buffer_t *buffer)
 	}
 }
 
+static void print_labels(buffer_t *buffer)
+{
+	for (int i = 0; i < buffer->nb_labels; i++)
+		printf("LABELS[%d] : %s\n", i, buffer->labels[i].str);
+}
+
 int main(int ac, char **av)
 {
 	int status;
@@ -56,6 +62,8 @@ int main(int ac, char **av)
 	}
 	if (status != -1) {
 		print_tokens(&buffer);
+		printf("NB_LABELS: %d\n", buffer.nb_labels);
+		print_labels(&buffer);
 		printf("NB_BYTES: %d\n", buffer.nb_bytes);
 	}
 	free_buffer(&buffer);
