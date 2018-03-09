@@ -7,7 +7,6 @@
 
 #include <criterion/criterion.h>
 #include <criterion/redirect.h>
-#include <stdio.h>
 #include "asm.h"
 #include "parse.h"
 #include "op.h"

@@ -12,8 +12,6 @@
 #include "parse.h"
 #include "errors.h"
 
-//char const separators[3] = {SEPARATOR_CHAR, ' ', '\t'};
-
 int get_arg_type(char *arg)
 {
 	int reg_nb;
@@ -35,7 +33,6 @@ int get_arg_type(char *arg)
 		my_puterror(WRONG_INSTRUCT_ARG);
 		return (-1);
 	}
-
 }
 
 int is_args_valid(int id_cmd, int id_arg, char *arg)

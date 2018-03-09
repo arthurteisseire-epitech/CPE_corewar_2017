@@ -14,6 +14,7 @@
 #include "errors.h"
 #include "token.h"
 
+#include <stdio.h>
 static int check_str(line_t *line)
 {
 	if ((my_strcmp(NAME_CMD_STRING, line->tokens[0].str) != 0 &&

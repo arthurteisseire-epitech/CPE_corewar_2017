@@ -28,5 +28,6 @@ int store_and_check_line(int fd, buffer_t *buffer, int index, header_t *header);
 int set_line(buffer_t *buffer, line_t *line_data, char *line);
 void set_line_bytes(line_t *line);
 int set_header(line_t *line, header_t *header);
+int file_line(int increment);
 
 #endif
