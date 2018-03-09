@@ -33,7 +33,6 @@ int get_arg_type(char *arg)
 		my_puterror(WRONG_INSTRUCT_ARG);
 		return (-1);
 	}
-
 }
 
 int is_args_valid(int id_cmd, int id_arg, char *arg)

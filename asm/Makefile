@@ -20,9 +20,12 @@ DFREE	=	$(DSRC)free/
 SRC	=	$(DSRC)main.c \
 		$(DSRC)asm.c \
 		$(DSRC)op.c \
+		$(DSRC)put_err_asm.c \
+		$(DSRC)set_header.c \
 		$(DFREE)free.c \
 		$(DLINE)set_line.c \
 		$(DLINE)set_line_bytes.c \
+		$(DLINE)file_line.c \
 		$(DTOKEN)set_token_bytes.c \
 		$(DTOKEN)set_tokens.c \
 		$(DTOKEN)init_tokens.c \

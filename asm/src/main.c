@@ -12,8 +12,9 @@
 #include "line.h"
 #include "token.h"
 #include "free.h"
+#include "errors.h"
 
-char const separators[3] = {SEPARATOR_CHAR, ' ', 't'};
+char const separators[3] = {SEPARATOR_CHAR, ' ', '\t'};
 
 static int check_args(int ac)
 {
@@ -42,6 +43,12 @@ static void print_tokens(buffer_t *buffer)
 	}
 }
 
+static void print_labels(buffer_t *buffer)
+{
+	for (int i = 0; i < buffer->nb_labels; i++)
+		printf("LABELS[%d] : %s\n", i, buffer->labels[i].str);
+}
+
 int main(int ac, char **av)
 {
 	int status;
@@ -49,10 +56,14 @@ int main(int ac, char **av)
 
 	if (check_args(ac) == -1)
 		return (84);
-	for (int i = 1; i < ac; i++)
+	for (int i = 1; i < ac; i++) {
+		put_or_init_err(av, i);
 		status = my_asm(&buffer, av[i]);
+	}
 	if (status != -1) {
 		print_tokens(&buffer);
+		printf("NB_LABELS: %d\n", buffer.nb_labels);
+		print_labels(&buffer);
 		printf("NB_BYTES: %d\n", buffer.nb_bytes);
 	}
 	free_buffer(&buffer);
