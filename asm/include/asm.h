@@ -19,7 +19,7 @@
 
 typedef struct buffer buffer_t;
 
-int my_asm(buffer_t *buffer, char *pathname);
+int my_asm(char *pathname);
 
 extern char const separators[3];
 

@@ -52,21 +52,20 @@ static void print_labels(buffer_t *buffer)
 int main(int ac, char **av)
 {
 	int status;
-	buffer_t buffer;
 
 	if (check_args(ac) == -1)
 		return (84);
 	for (int i = 1; i < ac; i++) {
 		put_or_init_err(av, i);
-		status = my_asm(&buffer, av[i]);
+		status = my_asm(av[i]);
 	}
-	if (status != -1) {
+/*	if (status != -1) {
 		print_tokens(&buffer);
 		printf("NB_LABELS: %d\n", buffer.nb_labels);
 		print_labels(&buffer);
 		printf("NB_BYTES: %d\n", buffer.nb_bytes);
 	}
-	free_buffer(&buffer);
+	free_buffer(&buffer);*/
 	if (status == FEND)
 		return (0);
 	return (status);
