@@ -12,8 +12,6 @@
 #include "parse.h"
 #include "errors.h"
 
-//char const separators[3] = {SEPARATOR_CHAR, ' ', '\t'};
-
 int get_arg_type(char *arg)
 {
 	int reg_nb;
