@@ -21,8 +21,8 @@ static int check_str(line_t *line)
 		get_id_cmd(line->tokens[0].str) == -1) {
 		put_err_asm(INVALID_INSTRUCTION, line->index);
 		return (-1);
-	} else if (line->nb_tokens > 2 || line->tokens[1].str[0] != '"' ||
-		line->tokens[1].str[my_strlen(line->tokens[1].str) - 1] != '"') {
+	} else if (line->nb_tokens > 2 || (line->nb_tokens > 1 && (line->tokens[1].str[0] != '"' ||
+		line->tokens[1].str[my_strlen(line->tokens[1].str) - 1] != '"'))) {
 		put_err_asm(SYNTAX_ERROR, line->index);
 		return (-2);
 	}
@@ -34,6 +34,10 @@ static int set_name(line_t *line, header_t *header)
 	char *name;
 
 	if (my_strcmp(NAME_CMD_STRING, line->tokens[0].str) == 0) {
+		if (line->nb_tokens == 1) {
+			put_err_asm(NO_NAME ,line->index);
+			return (-1);
+		}
 		name = get_next_word(&line->tokens[1].str, "\"");
 		my_strcpy(header->prog_name, name);
 		free(name);
