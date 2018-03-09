@@ -33,7 +33,7 @@ void put_err_asm(char *error, int line)
 	my_puterror("line ");
 	my_puterror(nb_line);
 	free(nb_line);
-	my_puterror(":");
+	my_puterror(": ");
 	my_puterror(error);
 	my_puterror("\n");
 }

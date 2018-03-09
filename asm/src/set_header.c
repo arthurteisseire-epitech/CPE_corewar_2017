@@ -11,18 +11,21 @@
 #include "op.h"
 #include "line.h"
 #include "asm.h"
+#include "errors.h"
 #include "token.h"
 
 static int check_str(line_t *line)
 {
-	if ((my_strcmp(NAME_CMD_STRING, line->tokens[0].str) != 0 && my_strcmp(COMMENT_CMD_STRING, line->tokens[0].str) != 0) && get_id_cmd(line->tokens[0].str) == -1) {
-		printf("line->tokens %s\n", line->tokens[0].str);
+	if ((my_strcmp(NAME_CMD_STRING, line->tokens[0].str) != 0 &&
+		my_strcmp(COMMENT_CMD_STRING, line->tokens[0].str) != 0) &&
+		get_id_cmd(line->tokens[0].str) == -1) {
+		put_err_asm(INVALID_INSTRUCTION, line->index);
 		return (-1);
-	} else if (line->nb_tokens > 2 || line->tokens[1].str[0] != '"' || line->tokens[1].str[my_strlen(line->tokens[1].str) - 1] != '"'){
-		printf("line->tokens!! %d\n", line->nb_tokens);
+	} else if (line->nb_tokens > 2 || line->tokens[1].str[0] != '"' ||
+		line->tokens[1].str[my_strlen(line->tokens[1].str) - 1] != '"') {
+		put_err_asm(SYNTAX_ERROR, line->index);
 		return (-2);
-	} else
-		return (0);
+	}
 	return (0);
 }
 
@@ -45,7 +48,7 @@ static int set_comment(line_t *line, header_t *header)
 	char *comment;
 
 	if (my_strcmp(NAME_CMD_STRING, line->tokens[0].str) == 0){
-		printf("noob\n");
+		put_err_asm(MISPLACED_COMMENT, line->index);
 	}
 	else if (my_strcmp(COMMENT_CMD_STRING, line->tokens[0].str) == 0) {
 		comment = get_next_word(&line->tokens[1].str, "\"");
