@@ -22,4 +22,8 @@ Test(set_token_value, get_value)
 
 	my_asm(&buffer, "get_token_value.s");
 	cr_assert(buffer.lines[0].tokens[1].value == 14);
+	cr_assert(buffer.lines[0].tokens[2].value == 2);
+	cr_assert(buffer.lines[0].tokens[3].value == 1);
+	cr_assert(buffer.lines[1].tokens[1].value == 53);
+	cr_assert(buffer.lines[1].tokens[2].value == 10);
 }

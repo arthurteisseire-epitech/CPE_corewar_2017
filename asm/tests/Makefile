@@ -12,10 +12,10 @@ ASM	=	$(realpath ..)/
 DSRC_UT	=	$(realpath .)/
 INC	=	$(ASM)include/
 DLIB	=	$(ROOT)lib/my/
+LIB	=	my
 DSRC	=	$(ASM)src/
 DINIT	=	$(DSRC)init/
 DPARSE	=	$(DSRC)parse/
-IB	=	my
 DPARSE	=	$(DSRC)parse/
 DBUFFER	=	$(DSRC)buffer/
 DLINE	=	$(DSRC)line/
@@ -37,7 +37,6 @@ SRC	=	$(DSRC)asm.c \
 		$(DFREE)free.c
 
 SRC_UT	=	$(SRC_UTD)test_get_id_cmd.c \
-		$(SRC_UTD)get_id_cmd_test.c \
 		$(SRC_UTD)test_set_token_bytes.c \
 		$(SRC_UTD)test_is_index.c \
 		$(SRC_UTD)test_get_token_value.c
