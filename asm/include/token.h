@@ -10,12 +10,19 @@
 
 typedef struct line line_t;
 
+typedef union bin {
+	int dir;
+	short int ind;
+	char reg;
+} bin_u;
+
 typedef struct token {
 	char *str;
 	int cbyte;
 	int nb_bytes;
 	int is_label;
-	int value;
+	bin_u value;
+	char binary[4];
 } token_t;
 
 int set_tokens(buffer_t *buffer, line_t *line, char **tokens);

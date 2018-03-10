@@ -21,11 +21,12 @@ int my_asm(char *pathname)
 	header_t header;
 	int status = 0;
 
-	init_buffer(&buffer, pathname);
-	if (buffer.fd < 1)
+	if (init_buffer(&buffer, pathname) == -1)
 		return (-1);
-	set_header(&header, buffer.fd);
-	set_buffer(&buffer);
+	if (set_header(&header, buffer.fd) == -1)
+		return (-1);
+	if (set_buffer(&buffer) == -1)
+		return (-1);
 //	status = set_binary(&buffer);
 //	if (status == 0)
 //		write_binary(&buffer);
@@ -37,7 +38,8 @@ int set_buffer(buffer_t *buffer)
 {
 	char *line = get_next_line(buffer->fd);
 
-	skip_comments_and_labels(buffer, &line);
+	if (skip_comments_and_labels(buffer, &line) == -1)
+		return (-1);
 	//set_line(buffer, line);
 	return (0);
 }
@@ -48,7 +50,7 @@ int set_binary(buffer_t *buffer)
 	for (int i = 0; i < buffer->nb_lines; i++) {
 		replace_label_call(buffer, &buffer->lines[i]);
 		is_line_valide(&buffer->lines[i]);
-		set_binary_line(buffer, &buffer->lines[i]);
+		set_line_binary(buffer, &buffer->lines[i]);
 	}
 }
 */
