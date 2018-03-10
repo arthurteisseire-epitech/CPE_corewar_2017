@@ -11,7 +11,7 @@
 #include "asm.h"
 #include "parse.h"
 
-int skip_comments(int fd, char **line, char *sep)
+int skip_comments(int fd, char **line, char const *sep)
 {
 	char const comment_char[2] = {COMMENT_CHAR, '\0'};
 	char *tmp_line;
@@ -29,7 +29,7 @@ int skip_comments(int fd, char **line, char *sep)
 	return (FEND);
 }
 
-int is_comment(char *line, char *sep)
+int is_comment(char *line, char const *sep)
 {
 	int i = 0;
 

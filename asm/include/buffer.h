@@ -22,6 +22,7 @@ typedef struct buffer {
 	int nb_bytes;
 	int nb_labels;
 	int curr_byte;
+	int fd;
 } buffer_t;
 
 void init_buffer(buffer_t *buffer);
