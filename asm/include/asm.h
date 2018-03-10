@@ -23,6 +23,7 @@ int my_asm(char *pathname);
 int set_buffer(buffer_t *buffer);
 int set_binary(buffer_t *buffer);
 int write_binary(buffer_t *buffer);
+int increment_file_line(int increment);
 
 extern char const separators[3];
 

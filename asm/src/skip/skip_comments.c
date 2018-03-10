@@ -25,6 +25,7 @@ int skip_comments(int fd, char **line, char const *sep)
 		}
 		free(*line);
 		*line = get_next_line(fd);
+		increment_file_line(1);
 	}
 	return (FEND);
 }
