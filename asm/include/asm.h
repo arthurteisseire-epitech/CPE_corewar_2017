@@ -20,6 +20,9 @@
 typedef struct buffer buffer_t;
 
 int my_asm(char *pathname);
+int set_buffer(buffer_t *buffer);
+int set_binary(buffer_t *buffer);
+int write_binary(buffer_t *buffer);
 
 extern char const separators[3];
 

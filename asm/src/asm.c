@@ -6,23 +6,43 @@
 */
 
 #include <fcntl.h>
-#include "buffer.h"
 #include "my.h"
-#include "op.h"
-#include "line.h"
 #include "asm.h"
+#include "op.h"
+#include "buffer.h"
+#include "line.h"
+#include "skip.h"
 
 /* TO DO : RETURN CASCADE */
 
-/*int set_buffer(buffer_t *buffer, int fd)
+int my_asm(char *pathname)
 {
-	char *line = get_next_line(fd);
+	buffer_t buffer;
+	header_t header;
+	int status = 0;
 
-	skip_comments_and_labels(buffer, &line, fd);
-	set_line(buffer, line);
+	init_buffer(&buffer, pathname);
+	if (buffer.fd < 1)
+		return (-1);
+	set_header(&header, buffer.fd);
+	set_buffer(&buffer);
+//	status = set_binary(&buffer);
+//	if (status == 0)
+//		write_binary(&buffer);
+//	destroy(&buffer);
+	return (status);
 }
 
+int set_buffer(buffer_t *buffer)
+{
+	char *line = get_next_line(buffer->fd);
 
+	skip_comments_and_labels(buffer, &line);
+	//set_line(buffer, line);
+	return (0);
+}
+
+/*
 int set_binary(buffer_t *buffer)
 {
 	for (int i = 0; i < buffer->nb_lines; i++) {
@@ -30,25 +50,8 @@ int set_binary(buffer_t *buffer)
 		is_line_valide(&buffer->lines[i]);
 		set_binary_line(buffer, &buffer->lines[i]);
 	}
-}*/
-
-int my_asm(char *pathname)
-{
-	buffer_t buffer;
-	header_t header;
-	int fd = open(pathname, O_RDONLY);
-	int status = 0;
-
-	if (fd < 1)
-		return (-1);
-	set_header(&header, fd);
-//	set_buffer(&buffer, fd);
-//	status = set_binary(&buffer);
-//	if (status == 0)
-//		write_binary(&buffer);
-//	destroy(&buffer);
-	return (status);
 }
+*/
 
 //int write_binary(buffer_t *buffer)
 //{

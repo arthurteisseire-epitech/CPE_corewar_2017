@@ -10,8 +10,8 @@
 #include "op.h"
 #include "asm.h"
 #include "errors.h"
-#include "parse.h"
 #include "buffer.h"
+#include "skip.h"
 
 int store_label(buffer_t *buffer, char *label)
 {

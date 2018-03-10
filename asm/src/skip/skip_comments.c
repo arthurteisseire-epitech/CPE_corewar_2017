@@ -9,7 +9,7 @@
 #include "op.h"
 #include "my.h"
 #include "asm.h"
-#include "parse.h"
+#include "skip.h"
 
 int skip_comments(int fd, char **line, char const *sep)
 {

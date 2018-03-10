@@ -12,17 +12,6 @@
 #include "line.h"
 #include "token.h"
 
-int is_label(char *line)
-{
-	int i = 0;
-
-	while (is_char_in_str(line[i], LABEL_CHARS))
-		i++;
-	if (line[i] == LABEL_CHAR && line[i + 1] == '\0')
-		return (1);
-	return (0);
-}
-
 int set_tokens(buffer_t *buffer, line_t *line, char **tokens)
 {
 	int i = 1;

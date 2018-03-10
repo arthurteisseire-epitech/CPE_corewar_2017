@@ -8,6 +8,7 @@
 #include <stdlib.h>
 #include "my.h"
 #include "op.h"
+#include "skip.h"
 
 int is_label(char *line)
 {
