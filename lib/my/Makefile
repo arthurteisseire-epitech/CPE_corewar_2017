@@ -31,7 +31,9 @@ SRC	=	my_strlen.c \
 		split.c \
 		read_fullfile.c \
 		my_arrlen.c \
-		free_array.c
+		free_array.c \
+		clean_str.c 	\
+		nb_char_in_str.c \
 
 CFLAGS	+=	-Wall -W -Wextra
 OBJ	=	$(SRC:.c=.o)
