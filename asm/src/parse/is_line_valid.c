@@ -61,6 +61,17 @@ int is_nb_arg_valid(line_t *line, int id_cmd)
 	return (1);
 }
 
+int arg_type_to_cbyte(int arg_type)
+{
+	if (arg_type == T_REG)
+		return (1);
+	if (arg_type == T_DIR)
+		return (2);
+	if (arg_type == T_IND)
+		return (3);
+	return (0);
+}
+
 int is_line_valid(line_t *line)
 {
 	int id_cmd = get_id_cmd(line->tokens[0].str);
@@ -77,7 +88,7 @@ int is_line_valid(line_t *line)
 		arg_type = is_args_valid(id_cmd, id_arg, line_tk[id_arg].str);
 		if (arg_type == -1)
 			return (-1);
-		line_tk[id_arg].cbyte = arg_type;
+		line_tk[id_arg].cbyte = arg_type_to_cbyte(arg_type);
 	}
 	return (1);
 }
