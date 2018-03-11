@@ -28,6 +28,7 @@ int set_tokens(line_t *line, char **tokens)
 
 	if (init_tokens(line, tokens) == -1)
 		return (-1);
+	put_tokens_in_str(line, tokens);
 	line->tokens[0].is_label = is_label(tokens[0]);
 	while (i < line->nb_tokens) {
 		line->is_index = is_index(line);
