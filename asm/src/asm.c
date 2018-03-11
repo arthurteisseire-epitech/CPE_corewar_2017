@@ -16,42 +16,17 @@
 #include "token.h"
 #include "parse.h"
 
-#include <stdio.h>
-
-static void print_tokens(buffer_t *buffer)
-{
-	int i = 0;
-	int j = 0;
-	line_t *line;
-
-	while (i < buffer->nb_lines) {
-		j = 0;
-		line = &buffer->lines[i];
-		while (j < line->nb_tokens) {
-			printf("LINE[%d] -> TOKEN[%d] : %s\n", i, j, line->tokens[j].str);
-			j++;
-		}
-		i++;
-	}
-}
-
-static void print_labels(buffer_t *buffer)
-{
-	for (int i = 0; i < buffer->nb_labels; i++)
-		printf("LABELS[%d] : %s\n", i, buffer->labels[i].str);
-}
-
 int my_asm(char *pathname)
 {
 	buffer_t buffer;
-	header_t header;
+	header_t *header = malloc(sizeof(header_t));
 	int status = 0;
 
 	if (init_buffer(&buffer, pathname) == -1) {
 		free_buffer(&buffer);
 		return (-1);
 	}
-	if (set_header1(&header, buffer.fd) == -1) {
+	if (set_header1(header, buffer.fd) == -1) {
 		free_buffer(&buffer);
 		return (-1);
 	}
@@ -59,12 +34,11 @@ int my_asm(char *pathname)
 		free_buffer(&buffer);
 		return (-1);
 	}
-	print_tokens(&buffer);
-	print_labels(&buffer);
 	status = set_binary(&buffer);
 	if (status == 0)
-		write_binary(&buffer);
+		write_binary(&buffer, header);
 	free_buffer(&buffer);
+	free(header);
 	return (status);
 }
 
