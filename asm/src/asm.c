@@ -35,6 +35,7 @@ int my_asm(char *pathname)
 		return (-1);
 	}
 	status = set_binary(&buffer);
+	header->magic = REV_INT(header->magic);
 	if (status == 0)
 		write_binary(&buffer, header);
 	free_buffer(&buffer);
