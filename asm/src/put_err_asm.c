@@ -28,10 +28,10 @@ void put_or_init_err(char **av_init, int index_arg)
 
 int true_index(int i)
 {
-	static int real_index = 1;
+	static int real_index = 0;
 
 	if (i == -1)
-		real_index = 0;
+		real_index = 1;
 	else
 		real_index += i;
 	return (real_index);
