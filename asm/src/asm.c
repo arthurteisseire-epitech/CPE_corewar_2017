@@ -73,6 +73,7 @@ int set_line(line_t *line_struct, char *line)
 	char **tokens_arr = split(line, separators);
 	int i = 0;
 
+	line_struct->binary = NULL;
 	line_struct->nb_tokens = my_arrlen(tokens_arr);
 	while (i != line_struct->nb_tokens) {
 		set_tokens(line_struct, tokens_arr);
@@ -97,8 +98,10 @@ int set_buffer(buffer_t *buffer)
 		buffer->lines[index].index = index;
 		set_line(buffer->lines, line);
 		line = get_next_line(buffer->fd);
+		index++;
 	}
-	buffer->nb_lines = index;
+	buffer->nb_lines = index - 1;
+	print_tokens(buffer);
 	return (0);
 }
 

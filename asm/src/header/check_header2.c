@@ -35,7 +35,7 @@ int check_comment_syntax_error(char **comment_arr, char *comment)
 		put_err_asm(SYNTAX_ERROR);
 		return (-1);
 	}
-	return (-1);
+	return (0);
 }
 
 int check_name(char **name_arr, int index_name)

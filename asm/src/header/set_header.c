@@ -81,7 +81,8 @@ int set_header1(header_t *header, int fd)
 		print_error_and_free(name, comment);
 		return (-1);
 	}
-	if (set_header2(name, comment, index_name, header) == -1)
+	if (set_header2(name, comment, index_name, header) == -1) {
 		return (-1);
+	}
 	return (0);
 }
