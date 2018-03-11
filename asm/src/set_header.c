@@ -28,7 +28,7 @@ int nb_char_in_str(char c, char *str)
 	return (occ);
 }
 
-static char **split_header(char *str, char *sep)
+static char **split_header(char *str, char const *sep)
 {
 	char **arr = malloc(sizeof(char *) * (3 + 1));
 	char *tmp;
