@@ -78,33 +78,3 @@ int skip_and_set_labels(buffer_t *buffer, char **line, char const *sep)
 		return (-1);
 	return (1);
 }
-
-/*
-#include <fcntl.h>
-int main(int ac, char **av)
-{
-	char *line;
-	buffer_t buffer;
-
-	if (ac != 2)
-		return (84);
-	buffer.labels = NULL;
-	buffer.nb_labels = 0;
-	buffer.fd = open(av[1], O_RDONLY);
-	line = get_next_line(buffer.fd);
-	if (line == NULL)
-		return (84);
-	printf("BEFORE: %s\n", line);
-	skip_and_set_labels(&buffer, &line, " \t");
-	printf("AFTER: %s\n", line);
-	printf("LABELS IN BUFFER: \n");
-	for (int i = 0; i < buffer.nb_labels; i++) {
-		printf("LABEL[%d] : %s\n", i, buffer.labels[i].str);
-		free(buffer.labels[i].str);
-	}
-	free(buffer.labels);
-	free(line);
-	close(buffer.fd);
-	return (0);
-}
-*/
