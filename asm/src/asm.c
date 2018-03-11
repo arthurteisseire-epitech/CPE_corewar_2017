@@ -83,7 +83,8 @@ int set_binary(buffer_t *buffer)
 {
 	for (int i = 0; i < buffer->nb_lines; i++) {
 		replace_label_call(buffer, &buffer->lines[i]);
-		is_line_valid(&buffer->lines[i]);
+		if (is_line_valid(&buffer->lines[i]) == -1)
+			return (-1);
 		set_line_binary(&buffer->lines[i]);
 	}
 	return (0);
