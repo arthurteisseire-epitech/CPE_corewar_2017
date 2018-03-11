@@ -11,6 +11,7 @@
 #include "op.h"
 #include "buffer.h"
 #include "token.h"
+#include "errors.h"
 
 void overwrite_label_call(line_t *line, int id_tk, int jump_size)
 {
@@ -38,7 +39,7 @@ int replace_label_call(buffer_t *buffer, line_t *line)
 		&line->tokens[label_call_id].str[2]);
 		if (get_label_id(buffer, 
 			line->tokens[label_call_id].str) == 0) {
-			my_puterror("~invalid label name~\n");
+			put_err_asm(INVALID_LABEL);
 			return (-1);
 		}
 	index_label_line = buffer->lines[buffer->labels[label_id].line].index;

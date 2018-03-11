@@ -45,7 +45,7 @@ int is_args_valid(int id_cmd, int id_arg, char *arg)
 		put_err_asm(WRONG_INSTRUCT_ARG);
 		return (-1);
 	}
-	return (1);
+	return (arg_type);
 }
 
 int is_nb_arg_valid(line_t *line, int id_cmd)
@@ -65,6 +65,7 @@ int is_line_valid(line_t *line)
 {
 	int id_cmd = get_id_cmd(line->tokens[0].str);
 	token_t *line_tk = line->tokens;
+	int arg_type;
 
 	if (id_cmd == -1) {
 		put_err_asm(INVALID_INSTRUCTION);
@@ -73,8 +74,10 @@ int is_line_valid(line_t *line)
 	if (is_nb_arg_valid(line, id_cmd) == -1)
 		return (-1);
 	for (int id_arg = 1; id_arg < line->nb_tokens; id_arg++) {
-		if (is_args_valid(id_cmd, id_arg, line_tk[id_arg].str) == -1)
+		arg_type = is_args_valid(id_cmd, id_arg, line_tk[id_arg].str);
+		if (arg_type == -1)
 			return (-1);
+		line_tk[id_arg].cbyte = arg_type;
 	}
 	return (1);
 }
