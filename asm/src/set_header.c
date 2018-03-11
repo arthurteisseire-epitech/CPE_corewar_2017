@@ -15,10 +15,42 @@
 #include "errors.h"
 #include "token.h"
 
-#include <stdio.h>
+int nb_char_in_str(char c, char *str)
+{
+	int i = 0;
+	int occ = 0;
+
+	while (str[i] != '\0') {
+		if (str[i] == c)
+			occ++;
+		i++;
+	}
+	return (occ);
+}
+
+static char **split_header(char *str, char *sep)
+{
+	char **arr = malloc(sizeof(char *) * (3 + 1));
+	char *tmp;
+
+	if (arr == NULL)
+		return (NULL);
+	arr[0] = get_next_word(&str, sep);
+	arr[1] = get_next_word(&str, "\"");
+	tmp =  get_next_word(&str, sep);
+	arr[2] = tmp;
+	arr[3] = NULL;
+	if (arr[2][0] == '\0') {
+		free(tmp);
+		arr[2] = NULL;
+		free(arr[3]);
+	}
+	return(arr);
+}
+
 static int check_header(char *name, char *comment)
 {
-	char **name_arr = split(name, separators);
+	char **name_arr = split_header(name, separators);
 	char **comment_arr;
 
 	if (comment == NULL) {
@@ -47,11 +79,11 @@ static int check_header(char *name, char *comment)
 		put_err_asm(MISPLACED_COMMENT);
 		return (-1);
 	}
-	if (my_arrlen(name_arr) > 2 || (my_arrlen(name_arr) > 1 && (name_arr[1][0] != '"' || name_arr[1][my_strlen(name_arr[1]) - 1] != '"'))) {
+	if (my_arrlen(name_arr) > 2 || nb_char_in_str('\"', name) != 2) {
 		put_err_asm(SYNTAX_ERROR);
 		return (-1);
 	}
-	if (my_arrlen(comment_arr) > 2  || (my_arrlen(comment_arr) > 1 && (comment_arr[1][0] != '"' || comment_arr[1][my_strlen(comment_arr[1]) - 1] != '"'))) {
+	if (my_arrlen(comment_arr) > 2  || nb_char_in_str('\"', comment) != 2) {
 		true_index(1);
 		put_err_asm(SYNTAX_ERROR);
 		return (-1);
@@ -69,8 +101,8 @@ static int check_header(char *name, char *comment)
 
 static int set_comment_and_name(char *name, char *comment, header_t *header)
 {
-	char **name_cpy = split(name, "\t \"");
-	char **comment_cpy = split(comment, "\t \"");
+	char **name_cpy = split_header(name, separators);
+	char **comment_cpy = split_header(comment, separators);
 
 	my_strcpy(header->prog_name, name_cpy[1]);
 	my_strcpy(header->comment, comment_cpy[1]);
