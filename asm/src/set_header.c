@@ -98,5 +98,6 @@ int set_header(header_t *header, int fd)
 	set_comment_and_name(name, comment, header);
 	free(name);
 	free(comment);
+	true_index(1);
 	return (0);
 }

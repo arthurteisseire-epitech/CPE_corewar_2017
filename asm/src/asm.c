@@ -14,15 +14,17 @@
 
 /* TO DO : RETURN CASCADE */
 
-/*int set_buffer(buffer_t *buffer, int fd)
+int set_buffer(buffer_t *buffer, int fd)
 {
 	char *line = get_next_line(fd);
 
-	skip_comments_and_labels(buffer, &line, fd);
+
+//	skip_comments_and_labels(buffer, &line, fd);
 	set_line(buffer, line);
+	close(fd);
 }
 
-
+/*
 int set_binary(buffer_t *buffer)
 {
 	for (int i = 0; i < buffer->nb_lines; i++) {
@@ -31,6 +33,12 @@ int set_binary(buffer_t *buffer)
 		set_binary_line(buffer, &buffer->lines[i]);
 	}
 }*/
+
+int write_binary(buffer_t *buffer)
+{
+	char *buff = malloc(sizeof(char) * buffer->nb_bytes);
+
+}
 
 int my_asm(char *pathname)
 {
@@ -49,8 +57,3 @@ int my_asm(char *pathname)
 //	destroy(&buffer);
 	return (status);
 }
-
-//int write_binary(buffer_t *buffer)
-//{
-
-//}
