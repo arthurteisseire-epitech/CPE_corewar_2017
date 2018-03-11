@@ -25,7 +25,7 @@ int skip_comments(int fd, char **line, char const *sep)
 		}
 		free(*line);
 		*line = get_next_line(fd);
-		increment_file_line(1);
+		true_index(1);
 	}
 	return (FEND);
 }
@@ -36,7 +36,11 @@ int is_comment(char *line, char const *sep)
 
 	while (is_char_in_str(line[i], sep))
 		i++;
-	if (line[i] == COMMENT_CHAR || line[i] == '\0')
+	if (line[i] == COMMENT_CHAR)
 		return (1);
+	if (line[i] == '\0') {
+		true_index(1);
+		return (1);
+	}
 	return (0);
 }

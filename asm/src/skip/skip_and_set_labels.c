@@ -29,7 +29,7 @@ int set_new_line(buffer_t *buffer, char **line, char **tokens)
 
 	if (tokens[1] == NULL) {
 		*line = get_next_line(buffer->fd);
-		increment_file_line(1);
+		true_index(1);
 		free_array(tokens);
 		if (*line == NULL)
 			return (-1);

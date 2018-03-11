@@ -28,6 +28,5 @@ typedef struct buffer {
 
 int init_buffer(buffer_t *buffer, char *pathname);
 void set_buffer_bytes(buffer_t *buffer);
-int true_index(int i);
 
 #endif
