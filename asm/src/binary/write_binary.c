@@ -23,6 +23,10 @@ int write_binary(buffer_t *buffer)
 		return (-1);
 	for (int i = 0; i < buffer->nb_lines; i++)
 		fill_buffer_binary(buffer, &buffer->lines[i], &index_buffer);
+	int i = 0;
+	while(i < buffer->nb_bytes) {
+		i++;
+	}
 	write(fd_cor, buffer->binary, buffer->nb_bytes);
 	return (0);
 }
@@ -31,6 +35,10 @@ void fill_buffer_binary(buffer_t *buffer, line_t *line, int *index_buffer)
 {
 	for (int i = 0; i < line->nb_bytes; i++) {
 		buffer->binary[*index_buffer] = line->binary[i];
+		my_put_nbr(i);
+		my_putchar('-');
+		my_putchar(line->binary[i]);
+		my_putchar('\n');
 		(*index_buffer)++;
 	}
 }

@@ -24,7 +24,7 @@ static void print_tokens(buffer_t *buffer)
 	int j = 0;
 	line_t *line;
 
-	while (i < buffer->nb_lines + 1) {
+	while (i < buffer->nb_lines) {
 		j = 0;
 		line = &buffer->lines[i];
 		while (j < line->nb_tokens) {
@@ -100,7 +100,7 @@ int set_buffer(buffer_t *buffer)
 		line = get_next_line(buffer->fd);
 		index++;
 	}
-	buffer->nb_lines = index - 1;
+	buffer->nb_lines = index;
 	set_buffer_bytes(buffer);
 	return (0);
 }
