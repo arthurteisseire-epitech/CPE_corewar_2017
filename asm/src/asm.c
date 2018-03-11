@@ -16,6 +16,8 @@
 #include "token.h"
 #include "parse.h"
 
+#include <stdio.h>
+
 static void print_tokens(buffer_t *buffer)
 {
 	int i = 0;

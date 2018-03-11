@@ -22,9 +22,13 @@ typedef struct line {
 	char *binary;
 } line_t;
 
+int replace_label_call(buffer_t *buffer, line_t *line);
+void overwrite_label_call(line_t *line, int id_tk, int jump_size);
 int is_label(char *line);
+int is_valid_label(char *line);
 int is_label_call(char *line);
-int is_label_exist(buffer_t *buffer, char *line);
+int get_label_id(buffer_t *buffer, char *line);
+int detect_label_call(line_t *line);
 int is_index(line_t *line);
 int is_cbyte(line_t *line);
 int store_and_check_line(int fd, buffer_t *buffer, int index, header_t *header);
