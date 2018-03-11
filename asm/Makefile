@@ -18,6 +18,7 @@ DTOKEN	=	$(DSRC)token/
 DFREE	=	$(DSRC)free/
 DSKIP	=	$(DSRC)skip/
 DBINARY	=	$(DSRC)binary/
+DLABEL	=	$(DSRC)label/
 
 SRC	=	$(DSRC)main.c \
 		$(DSRC)asm.c \
@@ -33,8 +34,9 @@ SRC	=	$(DSRC)main.c \
 		$(DTOKEN)get_cbyte.c \
 		$(DBUFFER)init_buffer.c \
 		$(DBUFFER)set_buffer_bytes.c \
+		$(DLABEL)is_label.c \
+		$(DLABEL)replace_label.c \
 		$(DPARSE)get_id_cmd.c \
-		$(DPARSE)label.c \
 		$(DPARSE)is_line_valid.c \
 		$(DSKIP)check_label.c \
 		$(DSKIP)skip_and_set_labels.c \

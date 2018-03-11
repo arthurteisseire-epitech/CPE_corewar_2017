@@ -15,6 +15,7 @@
 #include "errors.h"
 #include "token.h"
 
+#include <stdio.h>
 static char **split_header(char *str, char const *sep)
 {
 	char **arr = split(str, "\"");
