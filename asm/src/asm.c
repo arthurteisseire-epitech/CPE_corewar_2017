@@ -67,13 +67,36 @@ int my_asm(char *pathname)
 	return (status);
 }
 
+int set_line(line_t *line_struct, char *line)
+{
+	char **tokens_arr = split(line, separators);
+	int i = 0;
+
+	line_struct->nb_tokens = my_arrlen(tokens_arr);
+	while (i != line_struct->nb_tokens) {
+		set_tokens(line_struct, tokens_arr);
+		i++;
+	}
+	set_line_bytes(line_struct);
+	free_array(tokens_arr);
+	return (0);
+}
+
 int set_buffer(buffer_t *buffer)
 {
 	char *line = get_next_line(buffer->fd);
+	int index = 0;
 
-	if (skip_comments_and_labels(buffer, &line) == -1)
-		return (-1);
-	//set_line(line);
+	buffer->lines = NULL;
+	while (line != NULL) {
+		if (skip_comments_and_labels(buffer, &line) == -1)
+			return (-1);
+		buffer->lines = realloc(buffer->lines, sizeof(line_t) * (index + 1));
+		buffer->lines[index].index = index;
+		set_line(buffer->lines, line);
+		line = get_next_line(buffer->fd);
+	}
+	buffer->nb_lines = index;
 	return (0);
 }
 
