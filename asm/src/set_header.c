@@ -116,7 +116,7 @@ int set_header(header_t *header, int fd)
 {
 	char *name = get_next_line(fd);
 	char *comment = get_next_line(fd);
-//decaler l'initalisation et boucler jusqu'a tant que ca soit plus un commentaire avant la vrai init et effacer a name et a comment le #
+//decaler l'initalisation et boucler jusqu'a tant que ca soit plus un commentaire ou \n avant la vrai init et effacer a name et a comment le #
 	true_index(1);
 	if (name == NULL) {
 		put_or_init_err(NULL, 0);
