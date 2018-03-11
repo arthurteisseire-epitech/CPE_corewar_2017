@@ -5,6 +5,8 @@
 ** Ozz
 */
 
+#include "line.h"
+#include "buffer.h"
 #include "op.h"
 #include "my.h"
 
@@ -30,4 +32,33 @@ int is_label_call(char *line)
 			return (1);
 	}
 	return (0);
+}
+
+int is_label_valid(buffer_t *buffer, char *label)
+{
+	for (int i = 0; i < nb_labels; i++) {
+		if (my_strcmp(buffer->labels[i].str, label) == 0)
+			return (1);
+	}
+
+	return (0);
+}
+
+int detect_label_call(line_t *line)
+{
+	for (int i = 0; i < line->nb_tokens; i++) {
+		if (is_label_call(line->tokens[i]) == 1)
+			return (i);
+	}
+	return (0);
+}
+
+/*find label: 1, no label: 0, wrong label: -1*/
+int replace_label_call(buffer_t *buffer, line_t *line)
+{
+	int id_label = detect_label_call(line);
+
+	if (id_label == 0)
+		return (0);
+	if (is_label_valid(buffer, line->tokens[id_label].str) == 0)
 }
