@@ -38,6 +38,6 @@ char*	my_itoa(int nb);
 char*	read_fullfile(int fd);
 int	my_arrlen(char **array);
 void	free_array(char **arr);
-char *clean_str(char *, char);
+char * my_clean_str(char *, char);
 
 #endif
