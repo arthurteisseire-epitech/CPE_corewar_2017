@@ -12,17 +12,22 @@
 #include "buffer.h"
 #include "line.h"
 
-int write_binary(buffer_t *buffer)
+int write_binary(buffer_t *buffer, header_t *header)
 {
 	int fd_cor = open(buffer->cor_name, O_CREAT | O_WRONLY,
 	S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH);
 	int index_buffer = 0;
 
+	//printf("NB_BUFFER BYTES: %d\n", buffer->nb_bytes);
+	//printf("NB_BUFFER LINES: %d\n", buffer->nb_lines);
 	buffer->binary = malloc(sizeof(char) * buffer->nb_bytes);
 	if (buffer->binary == NULL)
 		return (-1);
 	for (int i = 0; i < buffer->nb_lines; i++)
 		fill_buffer_binary(buffer, &buffer->lines[i], &index_buffer);
+	header->prog_size = REV_INT(buffer->nb_bytes);
+	write(fd_cor, header, sizeof(header_t));
+	lseek(fd_cor, sizeof(header_t), SEEK_SET);
 	write(fd_cor, buffer->binary, buffer->nb_bytes);
 	return (0);
 }

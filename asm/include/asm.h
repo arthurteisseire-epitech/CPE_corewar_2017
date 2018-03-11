@@ -21,12 +21,13 @@
 			(((x) & 0x00ff) << 8)
 
 typedef struct buffer buffer_t;
+typedef struct header_s header_t;
 
 int my_asm(char *pathname);
 int set_buffer(buffer_t *buffer);
 int set_binary(buffer_t *buffer);
-int write_binary(buffer_t *buffer);
 int true_index(int i);
+int write_binary(buffer_t *buffer, header_t *header);
 
 extern char const separators[3];
 
