@@ -5,12 +5,22 @@
 ** by Arthur Teisseire
 */
 
-#include <stdlib.h>
 #include "op.h"
 #include "my.h"
 #include "asm.h"
 #include "line.h"
 #include "token.h"
+
+static int put_tokens_in_str(line_t *line, char **tokens)
+{
+	int i = 0;
+
+	while (i != line->nb_tokens) {
+		line->tokens[i].str = my_strdup(tokens[i]);
+		i++;
+	}
+	return (0);
+}
 
 int set_tokens(line_t *line, char **tokens)
 {

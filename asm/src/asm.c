@@ -14,6 +14,7 @@
 #include "skip.h"
 #include "free.h"
 #include "token.h"
+#include "parse.h"
 
 static void print_tokens(buffer_t *buffer)
 {
@@ -50,7 +51,7 @@ int my_asm(char *pathname)
 		free_buffer(&buffer);
 		return (-1);
 	}
-	if (set_header(&header, buffer.fd) == -1) {
+	if (set_header1(&header, buffer.fd) == -1) {
 		free_buffer(&buffer);
 		return (-1);
 	}
@@ -60,33 +61,56 @@ int my_asm(char *pathname)
 	}
 	print_tokens(&buffer);
 	print_labels(&buffer);
-//	status = set_binary(&buffer);
+	status = set_binary(&buffer);
 //	if (status == 0)
 //		write_binary(&buffer);
 	free_buffer(&buffer);
 	return (status);
 }
 
-int set_buffer(buffer_t *buffer)
+int set_line(line_t *line_struct, char *line)
 {
-	char *line = get_next_line(buffer->fd);
+	char **tokens_arr = split(line, separators);
+	int i = 0;
 
-	if (skip_comments_and_labels(buffer, &line) == -1)
-		return (-1);
-	//set_line(line);
+	line_struct->nb_tokens = my_arrlen(tokens_arr);
+	while (i != line_struct->nb_tokens) {
+		set_tokens(line_struct, tokens_arr);
+		i++;
+	}
+	set_line_bytes(line_struct);
+	free_array(tokens_arr);
 	return (0);
 }
 
-/*
-   int set_binary(buffer_t *buffer)
-   {
-   for (int i = 0; i < buffer->nb_lines; i++) {
-   replace_label_call(buffer, &buffer->lines[i]);
-   is_line_valide(&buffer->lines[i]);
-   set_line_binary(buffer, &buffer->lines[i]);
-   }
-   }
-   */
+int set_buffer(buffer_t *buffer)
+{
+	char *line = get_next_line(buffer->fd);
+	int index = 0;
+
+	buffer->lines = NULL;
+	while (line != NULL) {
+		if (skip_comments_and_labels(buffer, &line) == -1)
+			return (-1);
+		buffer->lines = realloc(buffer->lines,
+			sizeof(line_t) * (index + 1));
+		buffer->lines[index].index = index;
+		set_line(buffer->lines, line);
+		line = get_next_line(buffer->fd);
+	}
+	buffer->nb_lines = index;
+	return (0);
+}
+
+int set_binary(buffer_t *buffer)
+{
+	for (int i = 0; i < buffer->nb_lines; i++) {
+		//replace_label_call(buffer, &buffer->lines[i]);
+		//is_line_valide(&buffer->lines[i]);
+		set_line_binary(&buffer->lines[i]);
+	}
+	return (0);
+}
 
 //int write_binary(buffer_t *buffer)
 //{

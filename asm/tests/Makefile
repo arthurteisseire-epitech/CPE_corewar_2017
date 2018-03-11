@@ -16,7 +16,6 @@ LIB	=	my
 DSRC	=	$(ASM)src/
 DINIT	=	$(DSRC)init/
 DPARSE	=	$(DSRC)parse/
-DPARSE	=	$(DSRC)parse/
 DBUFFER	=	$(DSRC)buffer/
 DLINE	=	$(DSRC)line/
 DTOKEN	=	$(DSRC)token/
@@ -37,13 +36,14 @@ SRC	=	$(DSRC)asm.c \
 		$(DBUFFER)init_buffer.c \
 		$(DBUFFER)set_buffer_bytes.c \
 		$(DPARSE)get_id_cmd.c \
+		$(DPARSE)label.c \
 		$(DPARSE)skip_comments.c \
 		$(DPARSE)is_line_valid.c
-
 
 SRC_UT	=	$(SRC_UTD)test_get_id_cmd.c \
 		$(SRC_UTD)test_set_token_bytes.c \
 		$(SRC_UTD)test_is_index.c \
+		$(SRC_UTD)test_label.c \
 		$(SRC_UTD)test_check_label_buffer.c \
 		$(SRC_UTD)test_get_token_value.c
 

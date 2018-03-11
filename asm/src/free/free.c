@@ -2,7 +2,7 @@
 ** EPITECH PROJECT, 2017
 ** File Name : free.c
 ** File description:
-** Rémi BISSON 
+** Rémi BISSON
 */
 #include "line.h"
 #include "buffer.h"
@@ -53,6 +53,6 @@ int free_buffer(buffer_t *buffer)
 	if (buffer->cor_name != NULL)
 		free(buffer->cor_name);
 	/*if (buffer->binary != NULL)
-	  free(buffer->binary);*/
+	free(buffer->binary);*/
 	return (0);
 }
