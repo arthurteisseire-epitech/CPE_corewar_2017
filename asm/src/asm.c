@@ -24,7 +24,7 @@ static void print_tokens(buffer_t *buffer)
 	int j = 0;
 	line_t *line;
 
-	while (i < buffer->nb_lines) {
+	while (i < buffer->nb_lines + 1) {
 		j = 0;
 		line = &buffer->lines[i];
 		while (j < line->nb_tokens) {
@@ -40,8 +40,6 @@ static void print_labels(buffer_t *buffer)
 	for (int i = 0; i < buffer->nb_labels; i++)
 		printf("LABELS[%d] : %s\n", i, buffer->labels[i].str);
 }
-
-/* TO DO : RETURN CASCADE */
 
 int my_asm(char *pathname)
 {
@@ -98,12 +96,12 @@ int set_buffer(buffer_t *buffer)
 		buffer->lines = realloc(buffer->lines,
 			sizeof(line_t) * (index + 1));
 		buffer->lines[index].index = index;
-		set_line(buffer->lines, line);
+		set_line(&buffer->lines[index], line);
 		line = get_next_line(buffer->fd);
 		index++;
 	}
 	buffer->nb_lines = index - 1;
-	print_tokens(buffer);
+	set_buffer_bytes(buffer);
 	return (0);
 }
 
@@ -116,8 +114,3 @@ int set_binary(buffer_t *buffer)
 	}
 	return (0);
 }
-
-//int write_binary(buffer_t *buffer)
-//{
-
-//}
