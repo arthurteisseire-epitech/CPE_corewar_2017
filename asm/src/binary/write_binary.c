@@ -14,7 +14,8 @@
 
 int write_binary(buffer_t *buffer)
 {
-	int fd_cor = open(buffer->cor_name, O_CREAT | O_WRONLY);
+	int fd_cor = open(buffer->cor_name, O_CREAT | O_WRONLY,
+	S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH);
 	int index_buffer = 0;
 
 	buffer->binary = malloc(sizeof(char) * buffer->nb_bytes);

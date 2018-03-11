@@ -62,8 +62,8 @@ int my_asm(char *pathname)
 	print_tokens(&buffer);
 	print_labels(&buffer);
 	status = set_binary(&buffer);
-//	if (status == 0)
-//		write_binary(&buffer);
+	if (status == 0)
+		write_binary(&buffer);
 	free_buffer(&buffer);
 	return (status);
 }
