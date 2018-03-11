@@ -30,7 +30,6 @@ SRC	=	$(DSRC)main.c \
 		$(DTOKEN)set_token_bytes.c \
 		$(DTOKEN)set_tokens.c \
 		$(DTOKEN)init_tokens.c \
-		$(DTOKEN)get_cbyte.c \
 		$(DBUFFER)init_buffer.c \
 		$(DBUFFER)set_buffer_bytes.c \
 		$(DPARSE)get_id_cmd.c \
@@ -39,7 +38,9 @@ SRC	=	$(DSRC)main.c \
 		$(DSKIP)skip_and_set_labels.c \
 		$(DSKIP)skip_comments.c \
 		$(DSKIP)skip_comments_and_labels.c \
-		$(DBINARY)set_line_binary.c
+		$(DBINARY)set_line_binary.c \
+		$(DBINARY)write_binary.c \
+		$(DBINARY)get_cbyte.c
 
 OBJ	=	$(SRC:.c=.o)
 CFLAGS +=	-Wall -W -Wextra -I$(INC) -g

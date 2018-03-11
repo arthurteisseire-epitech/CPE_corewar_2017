@@ -30,5 +30,7 @@ typedef struct buffer {
 int init_buffer(buffer_t *buffer, char *pathname);
 int get_cor_name(buffer_t *buffer, char *pathname);
 void set_buffer_bytes(buffer_t *buffer);
+int write_binary(buffer_t *buffer);
+void fill_buffer_binary(buffer_t *buffer, line_t *line, int *index_buffer);
 
 #endif
