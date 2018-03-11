@@ -101,6 +101,7 @@ int set_buffer(buffer_t *buffer)
 		index++;
 	}
 	buffer->nb_lines = index - 1;
+	set_buffer_bytes(buffer);
 	print_tokens(buffer);
 	return (0);
 }
