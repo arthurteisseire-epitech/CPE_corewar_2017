@@ -16,7 +16,8 @@
 int store_label(buffer_t *buffer, char *label)
 {
 	buffer->nb_labels += 1;
-	buffer->labels = realloc(buffer->labels, sizeof(label_t) * buffer->nb_labels);
+	buffer->labels = realloc(buffer->labels,
+		sizeof(label_t) * buffer->nb_labels);
 	buffer->labels[buffer->nb_labels - 1].str = label;
 	if (buffer->labels == NULL)
 		return (-1);
@@ -64,7 +65,7 @@ int set_label_line(buffer_t *buffer, char **line, char const *sep)
 int skip_and_set_labels(buffer_t *buffer, char **line, char const *sep)
 {
 	int lab_char;
-	
+
 	if (*line == NULL)
 		return (0);
 	lab_char = is_label_valid(*line, sep);

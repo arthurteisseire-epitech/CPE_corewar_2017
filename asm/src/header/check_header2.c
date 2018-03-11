@@ -2,7 +2,7 @@
 ** EPITECH PROJECT, 2017
 ** File Name : check_header2.c
 ** File description:
-** Rémi BISSON 
+** Rémi BISSON
 */
 
 #include <stdlib.h>
@@ -67,7 +67,8 @@ int check_header(char *name, char *comment, int index_name)
 		|| check_invalid_comment_instruction(comment_arr) == -1
 		|| check_misplaced_name(name_arr, comment_arr, index_name) == -1
 		|| check_no_comment_w(name_arr, comment_arr, index_name) == -1
-		|| check_misplaced_comment(name_arr, comment_arr, index_name) == -1
+		|| check_misplaced_comment(name_arr,
+			comment_arr, index_name) == -1
 		|| check_name_syntax_error(name_arr, name, index_name) == -1
 		|| check_comment_syntax_error(comment_arr, comment) == -1
 		|| check_name(name_arr, index_name) == -1

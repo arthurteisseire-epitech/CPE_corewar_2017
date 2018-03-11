@@ -2,7 +2,7 @@
 ** EPITECH PROJECT, 2017
 ** File Name : split_header.c
 ** File description:
-** Rémi BISSON 
+** Rémi BISSON
 */
 
 #include <stdlib.h>
@@ -21,11 +21,5 @@ char **split_header(char *str, char const *sep)
 	char **arr = split(str, "\"");
 
 	arr[0] = get_next_word(&str, sep);
-
-	int i = 0;
-	while (arr[i] != NULL) {
-		printf("arr[%d] = %s\n", i, arr[i]);
-		i++;
-	}
-	return(arr);
+	return (arr);
 }

@@ -91,7 +91,8 @@ int set_buffer(buffer_t *buffer)
 	while (line != NULL) {
 		if (skip_comments_and_labels(buffer, &line) == -1)
 			return (-1);
-		buffer->lines = realloc(buffer->lines, sizeof(line_t) * (index + 1));
+		buffer->lines = realloc(buffer->lines,
+			sizeof(line_t) * (index + 1));
 		buffer->lines[index].index = index;
 		set_line(buffer->lines, line);
 		line = get_next_line(buffer->fd);
@@ -101,15 +102,15 @@ int set_buffer(buffer_t *buffer)
 }
 
 /*
-   int set_binary(buffer_t *buffer)
-   {
-   for (int i = 0; i < buffer->nb_lines; i++) {
-   replace_label_call(buffer, &buffer->lines[i]);
-   is_line_valide(&buffer->lines[i]);
-   set_line_binary(buffer, &buffer->lines[i]);
-   }
-   }
-   */
+int set_binary(buffer_t *buffer)
+{
+	for (int i = 0; i < buffer->nb_lines; i++) {
+	replace_label_call(buffer, &buffer->lines[i]);
+	is_line_valide(&buffer->lines[i]);
+	set_line_binary(buffer, &buffer->lines[i]);
+	}
+}
+*/
 
 //int write_binary(buffer_t *buffer)
 //{

@@ -2,7 +2,7 @@
 ** EPITECH PROJECT, 2017
 ** File Name : check_header1.c
 ** File description:
-** Rémi BISSON 
+** Rémi BISSON
 */
 
 #include <stdlib.h>
