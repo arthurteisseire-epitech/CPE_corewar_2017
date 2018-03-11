@@ -50,7 +50,7 @@ int my_asm(char *pathname)
 		free_buffer(&buffer);
 		return (-1);
 	}
-	if (set_header(&header, buffer.fd) == -1) {
+	if (set_header1(&header, buffer.fd) == -1) {
 		free_buffer(&buffer);
 		return (-1);
 	}

@@ -30,7 +30,7 @@ int is_cbyte(line_t *line);
 int store_and_check_line(int fd, buffer_t *buffer, int index, header_t *header);
 int set_line(line_t *line_data, char *line);
 void set_line_bytes(line_t *line);
-int set_header(header_t *header, int fd);
+int set_header1(header_t *header, int fd);
 
 int set_line_binary(line_t *line);
 void set_args_binary(line_t *line, token_t *token, int *index_byte);
