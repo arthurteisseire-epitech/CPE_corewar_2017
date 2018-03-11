@@ -22,8 +22,10 @@ typedef struct line {
 	char *binary;
 } line_t;
 
-int is_index(line_t *line);
 int is_label(char *line);
+int is_label_call(char *line);
+int is_label_exist(buffer_t *buffer, char *line);
+int is_index(line_t *line);
 int is_cbyte(line_t *line);
 int store_and_check_line(int fd, buffer_t *buffer, int index, header_t *header);
 int set_line(line_t *line_data, char *line);

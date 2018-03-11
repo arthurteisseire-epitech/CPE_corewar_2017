@@ -5,7 +5,6 @@
 ** by Arthur Teisseire
 */
 
-#include <stdlib.h>
 #include "op.h"
 #include "my.h"
 #include "asm.h"

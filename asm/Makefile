@@ -34,6 +34,7 @@ SRC	=	$(DSRC)main.c \
 		$(DBUFFER)init_buffer.c \
 		$(DBUFFER)set_buffer_bytes.c \
 		$(DPARSE)get_id_cmd.c \
+		$(DPARSE)label.c \
 		$(DPARSE)is_line_valid.c \
 		$(DSKIP)check_label.c \
 		$(DSKIP)skip_and_set_labels.c \
