@@ -25,30 +25,6 @@ static int check_args(int ac)
 	return (0);
 }
 
-#include <stdio.h>
-static void print_tokens(buffer_t *buffer)
-{
-	int i = 0;
-	int j = 0;
-	line_t *line;
-
-	while (i < buffer->nb_lines) {
-		j = 0;
-		line = &buffer->lines[i];
-		while (j < line->nb_tokens) {
-			printf("LINE[%d] -> TOKEN[%d] : %s\n", i, j, line->tokens[j].str);
-			j++;
-		}
-		i++;
-	}
-}
-
-static void print_labels(buffer_t *buffer)
-{
-	for (int i = 0; i < buffer->nb_labels; i++)
-		printf("LABELS[%d] : %s\n", i, buffer->labels[i].str);
-}
-
 int main(int ac, char **av)
 {
 	int status;

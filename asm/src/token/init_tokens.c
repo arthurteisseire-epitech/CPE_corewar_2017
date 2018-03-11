@@ -12,7 +12,7 @@
 #include "line.h"
 #include "token.h"
 
-int init_tokens(buffer_t *buffer, line_t *line, char **tokens)
+int init_tokens(line_t *line, char **tokens)
 {
 	line->nb_tokens = my_arrlen(tokens);
 	line->tokens = malloc(sizeof(token_t) * line->nb_tokens);

@@ -25,8 +25,8 @@ typedef struct token {
 	char binary[4];
 } token_t;
 
-int set_tokens(buffer_t *buffer, line_t *line, char **tokens);
-int init_tokens(buffer_t *buffer, line_t *line, char **tokens);
+int set_tokens(line_t *line, char **tokens);
+int init_tokens(line_t *line, char **tokens);
 int set_token(line_t *line, int i);
 void set_token_bytes(line_t *line, token_t *token);
 

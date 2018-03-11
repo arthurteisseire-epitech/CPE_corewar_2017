@@ -12,6 +12,32 @@
 #include "buffer.h"
 #include "line.h"
 #include "skip.h"
+#include "line.h"
+#include "token.h"
+
+#include <stdio.h>
+static void print_tokens(buffer_t *buffer)
+{
+	int i = 0;
+	int j = 0;
+	line_t *line;
+
+	while (i < buffer->nb_lines) {
+		j = 0;
+		line = &buffer->lines[i];
+		while (j < line->nb_tokens) {
+			printf("LINE[%d] -> TOKEN[%d] : %s\n", i, j, line->tokens[j].str);
+			j++;
+		}
+		i++;
+	}
+}
+
+static void print_labels(buffer_t *buffer)
+{
+	for (int i = 0; i < buffer->nb_labels; i++)
+		printf("LABELS[%d] : %s\n", i, buffer->labels[i].str);
+}
 
 /* TO DO : RETURN CASCADE */
 
@@ -27,6 +53,8 @@ int my_asm(char *pathname)
 		return (-1);
 	if (set_buffer(&buffer) == -1)
 		return (-1);
+	print_tokens(&buffer);
+	print_labels(&buffer);
 //	status = set_binary(&buffer);
 //	if (status == 0)
 //		write_binary(&buffer);
@@ -40,7 +68,7 @@ int set_buffer(buffer_t *buffer)
 
 	if (skip_comments_and_labels(buffer, &line) == -1)
 		return (-1);
-	//set_line(buffer, line);
+	//set_line(line);
 	return (0);
 }
 

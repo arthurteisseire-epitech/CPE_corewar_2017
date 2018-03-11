@@ -12,11 +12,11 @@
 #include "line.h"
 #include "token.h"
 
-int set_tokens(buffer_t *buffer, line_t *line, char **tokens)
+int set_tokens(line_t *line, char **tokens)
 {
 	int i = 1;
 
-	if (init_tokens(buffer, line, tokens) == -1)
+	if (init_tokens(line, tokens) == -1)
 		return (-1);
 	line->tokens[0].is_label = is_label(tokens[0]);
 	while (i < line->nb_tokens) {
