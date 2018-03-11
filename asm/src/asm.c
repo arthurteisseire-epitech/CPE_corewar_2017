@@ -12,10 +12,9 @@
 #include "buffer.h"
 #include "line.h"
 #include "skip.h"
-#include "line.h"
+#include "free.h"
 #include "token.h"
 
-#include <stdio.h>
 static void print_tokens(buffer_t *buffer)
 {
 	int i = 0;
@@ -47,18 +46,24 @@ int my_asm(char *pathname)
 	header_t header;
 	int status = 0;
 
-	if (init_buffer(&buffer, pathname) == -1)
+	if (init_buffer(&buffer, pathname) == -1) {
+		free_buffer(&buffer);
 		return (-1);
-	if (set_header(&header, buffer.fd) == -1)
+	}
+	if (set_header(&header, buffer.fd) == -1) {
+		free_buffer(&buffer);
 		return (-1);
-	if (set_buffer(&buffer) == -1)
+	}
+	if (set_buffer(&buffer) == -1) {
+		free_buffer(&buffer);
 		return (-1);
+	}
 	print_tokens(&buffer);
 	print_labels(&buffer);
 //	status = set_binary(&buffer);
 //	if (status == 0)
 //		write_binary(&buffer);
-//	destroy(&buffer);
+	free_buffer(&buffer);
 	return (status);
 }
 
@@ -73,15 +78,15 @@ int set_buffer(buffer_t *buffer)
 }
 
 /*
-int set_binary(buffer_t *buffer)
-{
-	for (int i = 0; i < buffer->nb_lines; i++) {
-		replace_label_call(buffer, &buffer->lines[i]);
-		is_line_valide(&buffer->lines[i]);
-		set_line_binary(buffer, &buffer->lines[i]);
-	}
-}
-*/
+   int set_binary(buffer_t *buffer)
+   {
+   for (int i = 0; i < buffer->nb_lines; i++) {
+   replace_label_call(buffer, &buffer->lines[i]);
+   is_line_valide(&buffer->lines[i]);
+   set_line_binary(buffer, &buffer->lines[i]);
+   }
+   }
+   */
 
 //int write_binary(buffer_t *buffer)
 //{
