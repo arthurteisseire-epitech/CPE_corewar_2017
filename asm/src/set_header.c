@@ -30,21 +30,16 @@ int nb_char_in_str(char c, char *str)
 
 static char **split_header(char *str, char const *sep)
 {
-	char **arr = malloc(sizeof(char *) * (3 + 1));
-	char *tmp;
+	char **arr = split(str, "\"");
 
-	if (arr == NULL)
-		return (NULL);
 	arr[0] = get_next_word(&str, sep);
-	arr[1] = get_next_word(&str, "\"");
-	tmp =  get_next_word(&str, sep);
-	arr[2] = tmp;
-	arr[3] = NULL;
-	if (arr[2][0] == '\0') {
-		free(tmp);
-		arr[2] = NULL;
-		free(arr[3]);
+
+	int i = 0;
+	while (arr[i] != NULL) {
+		printf("arr[%d] = %s\n", i, arr[i]);
+		i++;
 	}
+	printf("\n\n");
 	return(arr);
 }
 
@@ -57,7 +52,7 @@ static int check_header(char *name, char *comment)
 		put_err_asm(SYNTAX_ERROR);
 		return (-1);
 	}
-	comment_arr = split(comment, separators);
+	comment_arr = split_header(comment, separators);
 	if (((my_strcmp(name_arr[0], NAME_CMD_STRING) != 0 && my_strcmp(name_arr[0], COMMENT_CMD_STRING) != 0) && get_id_cmd(name_arr[0]) == -1)) {
 		put_err_asm(INVALID_INSTRUCTION);
 		return (-1);
@@ -79,11 +74,11 @@ static int check_header(char *name, char *comment)
 		put_err_asm(MISPLACED_COMMENT);
 		return (-1);
 	}
-	if (my_arrlen(name_arr) > 2 || nb_char_in_str('\"', name) != 2) {
+	if (my_arrlen(name_arr) > 2 || (nb_char_in_str('\"', name) != 2 && my_arrlen(name_arr) == 2)) {
 		put_err_asm(SYNTAX_ERROR);
 		return (-1);
 	}
-	if (my_arrlen(comment_arr) > 2  || nb_char_in_str('\"', comment) != 2) {
+	if (my_arrlen(comment_arr) > 2  || (nb_char_in_str('\"', comment) != 2 && my_arrlen(comment_arr) == 2)) {
 		true_index(1);
 		put_err_asm(SYNTAX_ERROR);
 		return (-1);
@@ -117,7 +112,6 @@ int set_header(header_t *header, int fd)
 	char *name = get_next_line(fd);
 	char *comment = get_next_line(fd);
 //decaler l'initalisation et boucler jusqu'a tant que ca soit plus un commentaire ou \n avant la vrai init et effacer a name et a comment le #
-	true_index(1);
 	if (name == NULL) {
 		put_or_init_err(NULL, 0);
 		my_puterror(" :");
@@ -125,8 +119,17 @@ int set_header(header_t *header, int fd)
 		my_puterror("\n");
 		return (-1);
 	}
-	if (check_header(name, comment) == -1)
+	name = my_clean_str(name, '\t');
+	name = my_clean_str(name, ' ');
+	if (comment != NULL) {
+		comment = my_clean_str(comment, '\t');
+		comment = my_clean_str(comment, '\t');
+	}
+	if (check_header(name, comment) == -1) {
+		free(name);
+		free(comment);	
 		return (-1);
+	}
 	set_comment_and_name(name, comment, header);
 	free(name);
 	free(comment);
