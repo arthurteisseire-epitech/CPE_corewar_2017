@@ -21,5 +21,6 @@ int init_buffer(buffer_t *buffer, char *pathname)
 	buffer->fd = open(pathname, O_RDONLY);
 	if (buffer->fd == -1)
 		return (-1);
+	buffer->fd_cor = open()
 	return (0);
 }

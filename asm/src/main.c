@@ -68,5 +68,7 @@ int main(int ac, char **av)
 	free_buffer(&buffer);*/
 	if (status == FEND)
 		return (0);
+	else if (status == -1)
+		return (84);
 	return (status);
 }

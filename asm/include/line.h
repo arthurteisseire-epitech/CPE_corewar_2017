@@ -31,7 +31,7 @@ void set_line_bytes(line_t *line);
 int set_header(header_t *header, int fd);
 
 int set_line_binary(line_t *line);
-void set_args_binary(line_t *line, token_t *token, int index_byte);
+void set_args_binary(line_t *line, token_t *token, int *index_byte);
 void set_cbyte(line_t *line);
 void set_cmd_binary(line_t *line);
 void set_token_binary(token_t *token);

@@ -27,20 +27,29 @@ int set_line_binary(line_t *line)
 	}
 	for (int i = 1; i < line->nb_tokens; i++) {
 		set_token_binary(&line->tokens[i]);
-		set_args_binary(line, &line->tokens[i], index_byte);
-		index_byte++;
+		set_args_binary(line, &line->tokens[i], &index_byte);
 	}
 	return (0);
 }
 
-void set_args_binary(line_t *line, token_t *token, int index_byte)
+void set_args_binary(line_t *line, token_t *token, int *index_byte)
 {
-	if (token->nb_bytes == 1)
-		line->binary[index_byte] = token->value.reg;
-	else if (token->nb_bytes == 2)
-		line->binary[index_byte] = token->value.ind;
-	else if (token->nb_bytes == 4)
-		line->binary[index_byte] = token->value.dir;
+	if (token->nb_bytes == 1) {
+		line->binary[*index_byte] = token->value.reg;
+		(*index_byte)++;
+	} else if (token->nb_bytes == 2) {
+		for (int i = 0; i < 2; i++) {
+			line->binary[*index_byte] = token->value.reg;
+			token->value.dir >>= 8;
+			(*index_byte)++;
+		}
+	} else if (token->nb_bytes == 4) {
+		for (int i = 0; i < 4; i++) {
+			line->binary[*index_byte] = token->value.reg;
+			token->value.dir >>= 8;
+			(*index_byte)++;
+		}
+	}
 }
 
 void set_cbyte(line_t *line)
@@ -62,9 +71,12 @@ void set_cmd_binary(line_t *line)
 
 void set_token_binary(token_t *token)
 {
-	if (token->str[0] == REG_CHAR || token->str[0] == DIRECT_CHAR)
+	if (token->str[0] == REG_CHAR)
+		token->value.reg = my_atoi(&token->str[1]);
+	else if (token->str[0] == DIRECT_CHAR && token->nb_bytes == 4)
 		token->value.dir = my_atoi(&token->str[1]);
+	if (token->str[0] == DIRECT_CHAR && token->nb_bytes == 2)
+		token->value.ind = my_atoi(&token->str[1]);
 	else
-		token->value.dir = my_atoi(token->str);
-	token->value.dir = REV_BYTES(token->value.dir);
+		token->value.ind = my_atoi(token->str);
 }
