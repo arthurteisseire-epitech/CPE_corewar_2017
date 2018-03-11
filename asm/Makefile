@@ -16,6 +16,8 @@ DBUFFER	=	$(DSRC)buffer/
 DLINE	=	$(DSRC)line/
 DTOKEN	=	$(DSRC)token/
 DFREE	=	$(DSRC)free/
+DSKIP	=	$(DSRC)skip/
+DBINARY	=	$(DSRC)binary/
 
 SRC	=	$(DSRC)main.c \
 		$(DSRC)asm.c \
@@ -33,8 +35,12 @@ SRC	=	$(DSRC)main.c \
 		$(DBUFFER)init_buffer.c \
 		$(DBUFFER)set_buffer_bytes.c \
 		$(DPARSE)get_id_cmd.c \
-		$(DPARSE)skip_comments.c \
-		$(DPARSE)is_line_valid.c
+		$(DPARSE)is_line_valid.c \
+		$(DSKIP)check_label.c \
+		$(DSKIP)skip_and_set_labels.c \
+		$(DSKIP)skip_comments.c \
+		$(DSKIP)skip_comments_and_labels.c \
+		$(DBINARY)set_line_binary.c
 
 OBJ	=	$(SRC:.c=.o)
 CFLAGS +=	-Wall -W -Wextra -I$(INC) -g

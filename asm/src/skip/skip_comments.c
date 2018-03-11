@@ -9,9 +9,9 @@
 #include "op.h"
 #include "my.h"
 #include "asm.h"
-#include "parse.h"
+#include "skip.h"
 
-int skip_comments(int fd, char **line, char *sep)
+int skip_comments(int fd, char **line, char const *sep)
 {
 	char const comment_char[2] = {COMMENT_CHAR, '\0'};
 	char *tmp_line;
@@ -25,11 +25,12 @@ int skip_comments(int fd, char **line, char *sep)
 		}
 		free(*line);
 		*line = get_next_line(fd);
+		increment_file_line(1);
 	}
 	return (FEND);
 }
 
-int is_comment(char *line, char *sep)
+int is_comment(char *line, char const *sep)
 {
 	int i = 0;
 

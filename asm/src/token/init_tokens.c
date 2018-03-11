@@ -12,28 +12,9 @@
 #include "line.h"
 #include "token.h"
 
-static int skip_and_set_label(buffer_t *buffer, char **tokens, int is_lab)
+int init_tokens(line_t *line, char **tokens)
 {
-	if (is_lab) {
-		buffer->nb_labels += 1;
-		buffer->labels = realloc(buffer->labels, sizeof(label_t) * buffer->nb_labels);
-		if (buffer->labels == NULL)
-			return (-1);
-		buffer->labels[buffer->nb_labels - 1].str = tokens[0];
-	}
-	return (0);
-}
-
-int init_tokens(buffer_t *buffer, line_t *line, char **tokens)
-{
-	int is_lab = is_label(tokens[0]);
-
-	if (skip_and_set_label(buffer, tokens, is_lab) == -1)
-		return (-1);
-	line->nb_tokens = my_arrlen(tokens) - is_lab;
-	if (line->nb_tokens == 0) {
-		return (0);
-	}
+	line->nb_tokens = my_arrlen(tokens);
 	line->tokens = malloc(sizeof(token_t) * line->nb_tokens);
 	if (line->tokens == NULL)
 		return (-1);
@@ -41,7 +22,7 @@ int init_tokens(buffer_t *buffer, line_t *line, char **tokens)
 		line->tokens[i].nb_bytes = 0;
 		line->tokens[i].is_label = 0;
 		line->tokens[i].cbyte = 0;
-		line->tokens[i].str = tokens[i + is_lab];
+		line->tokens[i].str = tokens[i];
 	}
 	return (0);
 }

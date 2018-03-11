@@ -15,15 +15,15 @@ void set_token_bytes(line_t *line, token_t *token)
 {
 	if (token->str[0] == REG_CHAR) {
 		token->nb_bytes = 1;
-		token->value = my_atoi(&token->str[1]);
+		token->cbyte = 1;
 	} else if (token->str[0] == DIRECT_CHAR) {
 		if (line->is_index)
 			token->nb_bytes = 2;
 		else
 			token->nb_bytes = 4;
-		token->value = my_atoi(&token->str[1]);
+		token->cbyte = 2;
 	} else {
 		token->nb_bytes = 2;
-		token->value = my_atoi(token->str);
+		token->cbyte = 3;
 	}
 }

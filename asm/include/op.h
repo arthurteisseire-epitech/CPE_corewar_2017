@@ -1,11 +1,8 @@
 /*
-** op.h for  korewar
-**
-** Made by Astek
-** Login   <astek@epitech.net>
-**
-** Started on  Mon Mar 30 11:14:31 2009 Astek
-** Last update Tue Mar 22 16:44:20 2011 Astek
+** EPITECH PROJECT, 2017
+** File Name : parse.h
+** File description:
+** Ozz
 */
 
 #ifndef _OP_H_

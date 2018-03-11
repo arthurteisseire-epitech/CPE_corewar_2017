@@ -34,12 +34,12 @@ int is_index(line_t *line)
 	return (0);
 }
 
-int set_line(buffer_t *buffer, line_t *line_data, char *line)
+int set_line(line_t *line_data, char *line)
 {
 	char **tokens = split(line, separators);
 
 	line_data->tokens = NULL;
-	if (tokens == NULL || set_tokens(buffer, line_data, tokens) != 0)
+	if (tokens == NULL || set_tokens(line_data, tokens) != 0)
 		return (-1);
 	set_line_bytes(line_data);
 	return (0);

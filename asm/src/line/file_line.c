@@ -5,10 +5,13 @@
 ** by Arthur Teisseire
 */
 
-int file_line(int increment)
+int increment_file_line(int increment)
 {
 	static int real_index = 0;
 
-	real_index += increment;
+	if (increment == -1)
+		real_index = 0;
+	else
+		real_index += increment;
 	return (real_index);
 }

@@ -19,15 +19,21 @@ typedef struct line {
 	int nb_tokens;
 	int is_index;
 	token_t *tokens;
+	char *binary;
 } line_t;
 
 int is_index(line_t *line);
 int is_label(char *line);
 int is_cbyte(line_t *line);
 int store_and_check_line(int fd, buffer_t *buffer, int index, header_t *header);
-int set_line(buffer_t *buffer, line_t *line_data, char *line);
+int set_line(line_t *line_data, char *line);
 void set_line_bytes(line_t *line);
 int set_header(header_t *header, int fd);
-int file_line(int increment);
+
+int set_line_binary(line_t *line);
+void set_args_binary(line_t *line, token_t *token, int *index_byte);
+void set_cbyte(line_t *line);
+void set_cmd_binary(line_t *line);
+void set_token_binary(token_t *token);
 
 #endif
