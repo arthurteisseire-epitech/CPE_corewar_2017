@@ -37,7 +37,7 @@ int replace_label_call(buffer_t *buffer, line_t *line)
 	} else {
 		label_id = get_label_id(buffer,
 		&line->tokens[label_call_id].str[2]);
-		if (get_label_id(buffer, 
+		if (get_label_id(buffer,
 			line->tokens[label_call_id].str) == 0) {
 			put_err_asm(INVALID_LABEL);
 			return (-1);

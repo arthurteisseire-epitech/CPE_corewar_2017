@@ -20,7 +20,7 @@ int is_valid_label(char *line)
 	if (line[i] == LABEL_CHAR && line[i + 1] == '\0')
 		return (1);
 	return (0);
-} 
+}
 
 int is_label_call(char *line)
 {
