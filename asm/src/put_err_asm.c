@@ -28,10 +28,13 @@ void put_or_init_err(char **av_init, int index_arg)
 
 int true_index(int i)
 {
-	static int index;
+	static int real_index = 1;
 
-	index += i;
-	return (index);
+	if (i == -1)
+		real_index = 0;
+	else
+		real_index += i;
+	return (real_index);
 }
 
 void put_err_asm(char *error)
