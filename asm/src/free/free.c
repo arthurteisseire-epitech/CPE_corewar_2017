@@ -4,6 +4,7 @@
 ** File description:
 ** Rémi BISSON
 */
+
 #include "line.h"
 #include "buffer.h"
 #include "free.h"
@@ -52,7 +53,5 @@ int free_buffer(buffer_t *buffer)
 		free(buffer->labels);
 	if (buffer->cor_name != NULL)
 		free(buffer->cor_name);
-	/*if (buffer->binary != NULL)
-	free(buffer->binary);*/
 	return (0);
 }

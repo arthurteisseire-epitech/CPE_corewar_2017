@@ -35,12 +35,6 @@ int main(int ac, char **av)
 		put_or_init_err(av, i);
 		status = my_asm(av[i]);
 	}
-/*	if (status != -1) {
-		print_tokens(&buffer);
-		printf("NB_LABELS: %d\n", buffer.nb_labels);
-		print_labels(&buffer);
-		printf("NB_BYTES: %d\n", buffer.nb_bytes);
-	}*/
 	if (status == FEND)
 		return (0);
 	else if (status == -1)
