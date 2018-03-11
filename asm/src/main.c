@@ -64,8 +64,7 @@ int main(int ac, char **av)
 		printf("NB_LABELS: %d\n", buffer.nb_labels);
 		print_labels(&buffer);
 		printf("NB_BYTES: %d\n", buffer.nb_bytes);
-	}
-	free_buffer(&buffer);*/
+	}*/
 	if (status == FEND)
 		return (0);
 	return (status);

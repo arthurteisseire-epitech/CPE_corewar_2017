@@ -22,7 +22,10 @@ int free_line(line_t *line)
 	if (line != NULL) {
 		for (int i = 0; i + 1 < line->nb_tokens; i++)
 			free_token(&line->tokens[i]);
-		free(line->tokens);
+		if (line->tokens != NULL)
+			free(line->tokens);
+		if (line->binary != NULL)
+			free(line->binary);
 	}
 	return (0);
 }
@@ -38,14 +41,18 @@ int free_label(label_t *label)
 
 int free_buffer(buffer_t *buffer)
 {
-	if (buffer != NULL) {
-		for (int i = 0; i < buffer->nb_lines; i++) {
-			free_line(&buffer->lines[i]);
-		}
-		free(buffer->lines);
-		for (int i = 0; i < buffer->nb_labels; i++)
-			free_label(&buffer->labels[i]);
-		free(buffer->labels);
+	for (int i = 0; i < buffer->nb_lines; i++) {
+		free_line(&buffer->lines[i]);
 	}
+	if (buffer->lines != NULL)
+		free(buffer->lines);
+	for (int i = 0; i < buffer->nb_labels; i++)
+		free_label(&buffer->labels[i]);
+	if (buffer->labels != NULL)
+		free(buffer->labels);
+	if (buffer->cor_name != NULL)
+		free(buffer->cor_name);
+	/*if (buffer->binary != NULL)
+	  free(buffer->binary);*/
 	return (0);
 }
