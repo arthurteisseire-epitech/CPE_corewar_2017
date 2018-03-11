@@ -16,6 +16,8 @@ int skip_comments_and_labels(buffer_t *buffer, char **line)
 		if (skip_comments(buffer->fd, line, " \t") == -1)
 			return (-1);
 		is_label = skip_and_set_labels(buffer, line, " \t");
+		if (is_label == -1)
+			return (-1);
 	}
 	return (is_label);
 }

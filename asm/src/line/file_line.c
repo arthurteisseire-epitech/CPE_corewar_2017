@@ -7,7 +7,7 @@
 
 int increment_file_line(int increment)
 {
-	static int real_index = 0;
+	static int real_index = 1;
 
 	if (increment == -1)
 		real_index = 0;

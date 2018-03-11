@@ -69,7 +69,7 @@ int skip_and_set_labels(buffer_t *buffer, char **line, char const *sep)
 		return (0);
 	lab_char = is_label_valid(*line, sep);
 	if (lab_char == -1) {
-		my_puterror(INVALID_LABEL);
+		put_err_asm(INVALID_LABEL);
 		return (-1);
 	} else if (lab_char == 0)
 		return (0);
