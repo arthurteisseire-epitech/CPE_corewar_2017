@@ -54,11 +54,9 @@ void set_args_binary(line_t *line, token_t *token, int *index_byte)
 
 void set_cbyte(line_t *line)
 {
-	int shift_bits = 24;
-
 	for (int i = 1; i < line->nb_tokens; i++) {
-		line->binary[1] += (line->tokens[i].cbyte << shift_bits);
-		shift_bits -= 8;
+		line->binary[1] += line->tokens[i].cbyte;
+		line->binary[1] <<= 2;
 	}
 }
 
@@ -73,10 +71,14 @@ void set_token_binary(token_t *token)
 {
 	if (token->str[0] == REG_CHAR)
 		token->value.reg = my_atoi(&token->str[1]);
-	else if (token->str[0] == DIRECT_CHAR && token->nb_bytes == 4)
+	else if (token->str[0] == DIRECT_CHAR && token->nb_bytes == 4) {
 		token->value.dir = my_atoi(&token->str[1]);
-	if (token->str[0] == DIRECT_CHAR && token->nb_bytes == 2)
+		token->value.dir = REV_INT(token->value.dir);
+	} else if (token->str[0] == DIRECT_CHAR && token->nb_bytes == 2) {
 		token->value.ind = my_atoi(&token->str[1]);
-	else
+		token->value.ind = REV_SHORT(token->value.dir);
+	} else {
 		token->value.ind = my_atoi(token->str);
+		token->value.ind = REV_SHORT(token->value.dir);
+	}
 }
