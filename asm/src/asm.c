@@ -41,8 +41,6 @@ static void print_labels(buffer_t *buffer)
 		printf("LABELS[%d] : %s\n", i, buffer->labels[i].str);
 }
 
-/* TO DO : RETURN CASCADE */
-
 int my_asm(char *pathname)
 {
 	buffer_t buffer;
@@ -110,14 +108,9 @@ int set_buffer(buffer_t *buffer)
 int set_binary(buffer_t *buffer)
 {
 	for (int i = 0; i < buffer->nb_lines; i++) {
-		//replace_label_call(buffer, &buffer->lines[i]);
-		//is_line_valide(&buffer->lines[i]);
+		replace_label_call(buffer, &buffer->lines[i]);
+		is_line_valid(&buffer->lines[i]);
 		set_line_binary(&buffer->lines[i]);
 	}
 	return (0);
 }
-
-//int write_binary(buffer_t *buffer)
-//{
-
-//}
