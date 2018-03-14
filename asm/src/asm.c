@@ -19,27 +19,20 @@
 int my_asm(char *pathname)
 {
 	buffer_t buffer;
-	header_t *header = malloc(sizeof(header_t));
+	header_t header;
 	int status = 0;
 
-	if (init_buffer(&buffer, pathname) == -1) {
-		free_buffer(&buffer);
-		return (-1);
-	}
-	if (set_header1(header, buffer.fd) == -1) {
-		free_buffer(&buffer);
-		return (-1);
-	}
-	if (set_buffer(&buffer) == -1) {
+	if (init_buffer(&buffer, pathname) == -1 ||
+	set_header1(&header, buffer.fd) == -1 ||
+	set_buffer(&buffer) == -1) {
 		free_buffer(&buffer);
 		return (-1);
 	}
 	status = set_binary(&buffer);
-	header->magic = REV_INT(header->magic);
+	header.magic = REV_INT(header.magic);
 	if (status == 0)
-		write_binary(&buffer, header);
+		write_binary(&buffer, &header);
 	free_buffer(&buffer);
-	free(header);
 	return (status);
 }
 

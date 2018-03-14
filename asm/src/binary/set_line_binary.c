@@ -56,7 +56,7 @@ void set_cbyte(line_t *line)
 {
 	line->binary[1] = 0;
 	for (int i = 1; i < line->nb_tokens; i++) {
-		line->binary[1] += line->tokens[i].cbyte;
+		line->binary[1] += token_cbyte(&line->tokens[i]);
 		line->binary[1] <<= 2;
 	}
 }

@@ -25,7 +25,6 @@ int write_binary(buffer_t *buffer, header_t *header)
 		fill_buffer_binary(buffer, &buffer->lines[i], &index_buffer);
 	header->prog_size = REV_INT(buffer->nb_bytes);
 	write(fd_cor, header, sizeof(header_t));
-	lseek(fd_cor, sizeof(header_t), SEEK_SET);
 	write(fd_cor, buffer->binary, buffer->nb_bytes);
 	return (0);
 }
