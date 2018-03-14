@@ -69,10 +69,10 @@ int set_header1(header_t *header, int fd)
 	char *comment;
 	int index_name = 0;
 
-	for (int i = 0; i < PROG_NAME_LENGTH; i++)
-		header->comment[i] = '\0';
-	for (int i = 0; i < COMMENT_LENGTH; i++)
+	for (int i = 0; i < PROG_NAME_LENGTH + 4; i++)
 		header->prog_name[i] = '\0';
+	for (int i = 0; i < COMMENT_LENGTH + 4; i++)
+		header->comment[i] = '\0';
 	skip_comments(fd, &name, separators);
 	index_name = true_index(0);
 	comment = get_next_line(fd);
