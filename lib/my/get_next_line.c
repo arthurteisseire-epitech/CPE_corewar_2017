@@ -23,13 +23,10 @@ static int find_backspace(char *str)
 
 static char *cut_line(char **begin, char *line, int index_bn)
 {
-	char *res = malloc(1);
+	char *res;
 
-	if (res == NULL)
-		return (NULL);
-	*res = 0;
 	line = concat(line, *begin, index_bn);
-	res = concat(res, line, my_strlen(line));
+	res = concat(NULL, line, my_strlen(line));
 	*begin += index_bn + 1;
 	free(line);
 	return (res);
@@ -51,8 +48,8 @@ char *get_next_line(int fd)
 		begin = buffer;
 		if ((index = find_backspace(begin)) != -1)
 			return (cut_line(&begin, line, index));
-		else if (size < READ_SIZE)
-			return (cut_line(&begin, line, size));
+		else if (my_strlen(begin) != 0)
+			return (cut_line(&begin, line, my_strlen(begin)));
 		line = concat(line, begin, my_strlen(begin));
 	}
 	free(line);
