@@ -59,7 +59,7 @@ int set_buffer(buffer_t *buffer)
 
 	buffer->lines = NULL;
 	while (line != NULL) {
-		if (skip_comments_and_labels(buffer, &line) == -1)
+		if (skip_comments_and_labels(buffer, &line, index) == -1)
 			return (-1);
 		buffer->lines = realloc(buffer->lines,
 			sizeof(line_t) * (index + 1));

@@ -13,12 +13,13 @@
 #include "buffer.h"
 #include "skip.h"
 
-int store_label(buffer_t *buffer, char *label)
+int store_label(buffer_t *buffer, char *label, int index_line)
 {
 	buffer->nb_labels += 1;
 	buffer->labels = realloc(buffer->labels,
 		sizeof(label_t) * buffer->nb_labels);
 	buffer->labels[buffer->nb_labels - 1].str = label;
+	buffer->labels[buffer->nb_labels - 1].line = index_line;
 	if (buffer->labels == NULL)
 		return (-1);
 	return (0);
@@ -43,7 +44,7 @@ int set_new_line(buffer_t *buffer, char **line, char **tokens)
 	return (0);
 }
 
-int set_label_line(buffer_t *buffer, char **line, char const *sep)
+int set_label_line(buffer_t *buffer, char **line, char const *sep, int index_line)
 {
 	static char const sep_lab[2] = {LABEL_CHAR, '\0'};
 	char **tokens = split(*line, sep_lab);
@@ -55,14 +56,14 @@ int set_label_line(buffer_t *buffer, char **line, char const *sep)
 	label = get_next_word(&first_token, sep);
 	if (label == NULL)
 		return (-1);
-	if (store_label(buffer, label) == -1)
+	if (store_label(buffer, label, index_line) == -1)
 		return (-1);
 	if (set_new_line(buffer, line, tokens) == -1)
 		return (-1);
 	return (0);
 }
 
-int skip_and_set_labels(buffer_t *buffer, char **line, char const *sep)
+int skip_and_set_labels(buffer_t *buffer, char **line, char const *sep, int index_line)
 {
 	int lab_char;
 
@@ -74,7 +75,7 @@ int skip_and_set_labels(buffer_t *buffer, char **line, char const *sep)
 		return (-1);
 	} else if (lab_char == 0)
 		return (0);
-	if (set_label_line(buffer, line, sep) == -1)
+	if (set_label_line(buffer, line, sep, index_line) == -1)
 		return (-1);
 	return (1);
 }
