@@ -42,9 +42,9 @@ int replace_label_call(buffer_t *buffer, line_t *line)
 			put_err_asm(INVALID_LABEL);
 			return (-1);
 		}
-	index_label_line = buffer->lines[buffer->labels[label_id].line].index;
+	index_label_line = buffer->lines[buffer->labels[label_id].line].id_bytes;
 	overwrite_label_call(line, label_call_id,
-			index_label_line - line->index);
+			index_label_line - line->id_bytes);
 	return (0);
 	}
 }
