@@ -14,8 +14,6 @@ char **split(char *str, char const *flags)
 	char **res = malloc(sizeof(char *) * (nb_words + 1));
 	int i = 0;
 
-	if (res == NULL)
-		return (NULL);
 	res[nb_words] = NULL;
 	while (i < nb_words) {
 		res[i] = get_next_word(&str, flags);
