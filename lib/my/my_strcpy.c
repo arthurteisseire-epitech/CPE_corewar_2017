@@ -1,15 +1,15 @@
 /*
 ** EPITECH PROJECT, 2017
-** File Name : my_strncpy.c
+** Day06
 ** File description:
 ** Arthur Teisseire
 */
 
-char *my_strncpy(char *dest, char const *src, int const n)
+char *my_strcpy(char *dest, char const *src)
 {
 	int i = 0;
 
-	while (i < n && src[i] != '\0') {
+	while (src[i] != '\0') {
 		dest[i] = src[i];
 		i++;
 	}

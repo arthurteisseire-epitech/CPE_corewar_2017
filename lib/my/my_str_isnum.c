@@ -1,8 +1,8 @@
 /*
 ** EPITECH PROJECT, 2017
-** File Name : my_str_isnum.c
+** File Name: my_str_isnum
 ** File description:
-** by Arthur Teisseire
+** Ozz
 */
 
 int my_str_isnum(char const *str)
