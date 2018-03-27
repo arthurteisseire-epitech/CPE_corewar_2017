@@ -15,6 +15,7 @@ typedef struct token token_t;
 
 typedef struct line {
 	int index;
+	int id_bytes;
 	int nb_bytes;
 	int nb_tokens;
 	int is_index;
