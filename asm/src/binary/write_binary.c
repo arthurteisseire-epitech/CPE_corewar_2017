@@ -14,7 +14,7 @@
 
 int write_binary(buffer_t *buffer, header_t *header)
 {
-	int fd_cor = open(buffer->cor_name, O_CREAT | O_WRONLY,
+	int fd_cor = open(buffer->cor_name, O_CREAT | O_WRONLY | O_TRUNC,
 	S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH);
 	int index_buffer = 0;
 
