@@ -15,8 +15,11 @@ int is_label(char *line)
 	int i = 0;
 
 	while (line[i] != '\0') {
-		if (line[i] == LABEL_CHAR)
+		if (line[i] == LABEL_CHAR) {
+			if (i != 0 && line[i - 1] == DIRECT_CHAR)
+				return (0);
 			return (i);
+		}
 		i++;
 	}
 	return (0);
