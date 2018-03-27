@@ -38,9 +38,7 @@ int is_comment(char *line, char const *sep)
 		i++;
 	if (line[i] == COMMENT_CHAR)
 		return (1);
-	if (line[i] == '\0') {
-		true_index(1);
+	if (line[i] == '\0')
 		return (1);
-	}
 	return (0);
 }

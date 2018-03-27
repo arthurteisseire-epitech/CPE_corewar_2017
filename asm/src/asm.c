@@ -72,6 +72,7 @@ int set_buffer(buffer_t *buffer)
 			lines[index].id_bytes = lines[index - 1].id_bytes +
 			lines[index - 1].nb_bytes;
 		line = get_next_line(buffer->fd);
+		true_index(1);
 		index++;
 	}
 	buffer->nb_lines = index;
@@ -82,7 +83,8 @@ int set_buffer(buffer_t *buffer)
 int set_binary(buffer_t *buffer)
 {
 	for (int i = 0; i < buffer->nb_lines; i++) {
-		replace_label_call(buffer, &buffer->lines[i]);
+		if (replace_label_call(buffer, &buffer->lines[i]))
+			return (-1);
 		if (is_line_valid(&buffer->lines[i]) == -1)
 			return (-1);
 		set_line_binary(&buffer->lines[i]);

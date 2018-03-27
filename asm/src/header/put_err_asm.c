@@ -31,7 +31,7 @@ int true_index(int i)
 	static int real_index = 0;
 
 	if (i == -1)
-		real_index = 1;
+		real_index = 0;
 	else
 		real_index += i;
 	return (real_index);

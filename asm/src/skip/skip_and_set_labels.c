@@ -25,20 +25,17 @@ int store_label(buffer_t *buffer, char *label, int index_line)
 	return (0);
 }
 
-int set_new_line(buffer_t *buffer, char **line, char **tokens)
+int set_new_line(buffer_t *buffer, char **line, char *end, char *label)
 {
 	char *tmp_line = *line;
 
-	if (tokens[1] == NULL) {
+	if (label == NULL) {
 		*line = get_next_line(buffer->fd);
 		true_index(1);
-		free_array(tokens);
 		if (*line == NULL)
 			return (-1);
 	} else {
-		*line = tokens[1];
-		free(tokens[0]);
-		free(tokens);
+		*line = my_strdup(end);
 	}
 	free(tmp_line);
 	return (0);
@@ -47,18 +44,16 @@ int set_new_line(buffer_t *buffer, char **line, char **tokens)
 int set_label_line(buffer_t *buffer, char **line, char const *sep, int index_line)
 {
 	static char const sep_lab[2] = {LABEL_CHAR, '\0'};
-	char **tokens = split(*line, sep_lab);
-	char *first_token = tokens[0];
+	char *end = *line;
 	char *label;
 
-	if (tokens == NULL)
-		return (-1);
-	label = get_next_word(&first_token, sep);
+	label = get_next_word(&end, sep_lab);
+	my_strip(&label, sep);
 	if (label == NULL)
 		return (-1);
 	if (store_label(buffer, label, index_line) == -1)
 		return (-1);
-	if (set_new_line(buffer, line, tokens) == -1)
+	if (set_new_line(buffer, line, end + 1, label) == -1)
 		return (-1);
 	return (0);
 }

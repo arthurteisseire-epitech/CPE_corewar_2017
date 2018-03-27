@@ -17,7 +17,7 @@ int is_comment(char *line, char const *sep);
 int skip_comments(int fd, char **line, char const *sep);
 
 int store_label(buffer_t *buffer, char *label, int index_line);
-int set_new_line(buffer_t *buffer, char **line, char **tokens);
+int set_new_line(buffer_t *buffer, char **line, char *end, char *label);
 int set_label_line(buffer_t *buffer, char **line, char const *sep, int index_line);
 int skip_and_set_labels(buffer_t *buffer, char **line, char const *sep, int index_line);
 

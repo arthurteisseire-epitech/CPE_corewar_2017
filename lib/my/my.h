@@ -37,5 +37,13 @@ char*	my_itoa(int nb);
 char*	read_fullfile(int fd);
 int	my_arrlen(char **array);
 void	free_array(char **arr);
+char*	get_next_to(char const *str, char const *flags);
+char*	my_strip(char **str, char const *flags);
+int	count_endflags(char const *str, char const *flags);
+int 	count_flags(char const *str, char const *flags);
+int	my_str_isnum(char const *str);
+char*	my_strndup(char const *str, const int size);
+int	nb_char_in_str(char c, char *str);
+char*	my_clean_str(char *str, char c);
 
 #endif

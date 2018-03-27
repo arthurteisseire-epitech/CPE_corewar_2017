@@ -69,6 +69,7 @@ int set_header1(header_t *header, int fd)
 	char *comment;
 	int index_name = 0;
 
+	true_index(1);
 	for (int i = 0; i < PROG_NAME_LENGTH + 4; i++)
 		header->prog_name[i] = '\0';
 	for (int i = 0; i < COMMENT_LENGTH + 4; i++)
@@ -76,6 +77,7 @@ int set_header1(header_t *header, int fd)
 	skip_comments(fd, &name, separators);
 	index_name = true_index(0);
 	comment = get_next_line(fd);
+	true_index(1);
 	if (comment == NULL) {
 		put_err_asm(SYNTAX_ERROR);
 		return (-1);
