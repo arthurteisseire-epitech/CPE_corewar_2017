@@ -53,11 +53,9 @@ Test(get_next_line, long_text)
 	char *got = get_next_line(fd);
 	char *res = malloc(1);
 
-	*res = 0;
 	while (got) {
 		res = concat(res, got, my_strlen(got));
 		res = concat(res, "\n", 1);
-		free(got);
 		got = get_next_line(fd);
 	}
 	cr_assert_str_eq(res ,expected);

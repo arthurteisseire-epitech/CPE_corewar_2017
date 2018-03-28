@@ -1,3 +1,10 @@
+/*
+** EPITECH PROJECT, 2017
+** File Name : concat.c
+** File description:
+** by Arthur Teisseire
+*/
+
 #include <stdlib.h>
 #include "my.h"
 #include <stdio.h>

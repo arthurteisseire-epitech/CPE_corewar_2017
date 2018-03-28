@@ -42,7 +42,8 @@ int set_new_line(buffer_t *buffer, char **line, char *end, char *label)
 	return (0);
 }
 
-int set_label_line(buffer_t *buffer, char **line, char const *sep, int index_line)
+int set_label_line(buffer_t *buffer, char **line, char const *sep,
+int index_line)
 {
 	static char const sep_lab[2] = {LABEL_CHAR, '\0'};
 	char *end = *line;
@@ -59,7 +60,8 @@ int set_label_line(buffer_t *buffer, char **line, char const *sep, int index_lin
 	return (0);
 }
 
-int skip_and_set_labels(buffer_t *buffer, char **line, char const *sep, int index_line)
+int skip_and_set_labels(buffer_t *buffer, char **line, char const *sep,
+int index_line)
 {
 	int lab_char;
 
@@ -67,7 +69,8 @@ int skip_and_set_labels(buffer_t *buffer, char **line, char const *sep, int inde
 		exit(0);
 	lab_char = is_label_valid(*line, sep);
 	if (lab_char == -1) {
-		put_err_asm(buffer->lines[index_line].true_index, INVALID_LABEL);
+		put_err_asm(buffer->lines[index_line].true_index,
+		INVALID_LABEL);
 		return (-1);
 	} else if (lab_char == 0)
 		return (0);
