@@ -79,7 +79,7 @@ int set_header1(header_t *header, int fd)
 	comment = get_next_line(fd);
 	true_index(1);
 	if (comment == NULL) {
-		put_err_asm(SYNTAX_ERROR);
+		put_err_asm(true_index(0), SYNTAX_ERROR);
 		return (-1);
 	}
 	skip_comments(fd, &comment, separators);

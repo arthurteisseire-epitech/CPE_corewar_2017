@@ -21,7 +21,7 @@ int check_name_syntax_error(char **name_arr, char *name)
 	if (my_arrlen(name_arr) > 2 || (nb_char_in_str('\"', name) != 2
 		&& my_arrlen(name_arr) == 2)) {
 		true_index(-1);
-		put_err_asm(SYNTAX_ERROR);
+		put_err_asm(true_index(0), SYNTAX_ERROR);
 		return (-1);
 	}
 	return (0);
@@ -31,7 +31,7 @@ int check_comment_syntax_error(char **comment_arr, char *comment)
 {
 	if (my_arrlen(comment_arr) > 2  || (nb_char_in_str('\"', comment) != 2
 		&& my_arrlen(comment_arr) == 2)) {
-		put_err_asm(SYNTAX_ERROR);
+		put_err_asm(true_index(0), SYNTAX_ERROR);
 		return (-1);
 	}
 	return (0);
@@ -41,7 +41,7 @@ int check_name(char **name_arr)
 {
 	if (my_arrlen(name_arr) == 1) {
 		true_index(-1);
-		put_err_asm(NO_NAME);
+		put_err_asm(true_index(0), NO_NAME);
 		return (-1);
 	}
 	return (0);
@@ -50,7 +50,7 @@ int check_name(char **name_arr)
 int check_empty_comment(char **comment_arr)
 {
 	if (my_arrlen(comment_arr) == 1) {
-		put_err_asm(EMPTY_COMMENT);
+		put_err_asm(true_index(0), EMPTY_COMMENT);
 		return (-1);
 	}
 	return (0);

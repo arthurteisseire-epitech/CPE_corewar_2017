@@ -12,6 +12,7 @@
 #include "errors.h"
 #include "buffer.h"
 #include "skip.h"
+#include "line.h"
 
 int store_label(buffer_t *buffer, char *label, int index_line)
 {
@@ -66,7 +67,7 @@ int skip_and_set_labels(buffer_t *buffer, char **line, char const *sep, int inde
 		return (0);
 	lab_char = is_label_valid(*line, sep);
 	if (lab_char == -1) {
-		put_err_asm(INVALID_LABEL);
+		put_err_asm(buffer->lines[index_line].true_index, INVALID_LABEL);
 		return (-1);
 	} else if (lab_char == 0)
 		return (0);

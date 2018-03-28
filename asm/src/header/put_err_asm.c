@@ -28,18 +28,18 @@ void put_or_init_err(char **av_init, int index_arg)
 
 int true_index(int i)
 {
-	static int real_index = 0;
+	static int real_index = 1;
 
 	if (i == -1)
-		real_index = 0;
+		real_index = 1;
 	else
 		real_index += i;
 	return (real_index);
 }
 
-void put_err_asm(char *error)
+void put_err_asm(int index_line, char *error)
 {
-	char *nb_line = my_itoa(true_index(0));
+	char *nb_line = my_itoa(index_line);
 
 	put_or_init_err(NULL, 0);
 	my_puterror("line ");

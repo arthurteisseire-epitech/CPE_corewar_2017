@@ -14,6 +14,7 @@ typedef struct buffer buffer_t;
 typedef struct token token_t;
 
 typedef struct line {
+	int true_index;
 	int index;
 	int id_bytes;
 	int nb_bytes;

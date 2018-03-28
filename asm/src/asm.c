@@ -67,6 +67,7 @@ int set_buffer(buffer_t *buffer)
 		lines = buffer->lines;
 		lines[index].index = index;
 		lines[index].id_bytes = 0;
+		lines[index].true_index = true_index(0);
 		set_line(&buffer->lines[index], line);
 		if (index != 0)
 			lines[index].id_bytes = lines[index - 1].id_bytes +

@@ -34,6 +34,6 @@
 #define INVALID_LABEL "Invalid label name."
 
 void put_or_init_err(char **av_init, int index_arg);
-void put_err_asm(char *error);
+void put_err_asm(int index_line, char *error);
 
 #endif
