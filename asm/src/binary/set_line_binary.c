@@ -54,10 +54,17 @@ void set_args_binary(line_t *line, token_t *token, int *index_byte)
 
 void set_cbyte(line_t *line)
 {
+	int i = 1;
+
 	line->binary[1] = 0;
-	for (int i = 1; i < line->nb_tokens; i++) {
+	while (i < line->nb_tokens) {
 		line->binary[1] += token_cbyte(&line->tokens[i]);
 		line->binary[1] <<= 2;
+		i++;
+	}
+	while (i < 4) {
+		line->binary[1] <<= 2;
+		i++;
 	}
 }
 
