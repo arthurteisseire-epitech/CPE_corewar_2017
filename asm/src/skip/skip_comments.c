@@ -27,7 +27,7 @@ int skip_comments(int fd, char **line, char const *sep)
 		*line = get_next_line(fd);
 		true_index(1);
 	}
-	return (FEND);
+	exit(0);
 }
 
 int is_comment(char *line, char const *sep)

@@ -41,7 +41,6 @@ int get_label_id(buffer_t *buffer, char *label)
 		if (my_strcmp(buffer->labels[i].str, label) == 0)
 			return (i);
 	}
-
 	return (-1);
 }
 

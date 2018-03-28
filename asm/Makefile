@@ -32,6 +32,7 @@ SRC	=	$(DSRC)main.c \
 		$(DTOKEN)init_tokens.c \
 		$(DBUFFER)init_buffer.c \
 		$(DBUFFER)set_buffer_bytes.c \
+		$(DBUFFER)set_buffer.c \
 		$(DLABEL)is_label.c \
 		$(DLABEL)replace_label.c \
 		$(DPARSE)get_id_cmd.c \

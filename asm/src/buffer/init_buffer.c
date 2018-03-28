@@ -11,6 +11,7 @@
 #include "buffer.h"
 #include "line.h"
 #include "my.h"
+#include "skip.h"
 
 int get_cor_name(buffer_t *buffer, char *pathname)
 {

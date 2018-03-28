@@ -34,10 +34,10 @@ int main(int ac, char **av)
 	for (int i = 1; i < ac; i++) {
 		put_or_init_err(av, i);
 		status = my_asm(av[i]);
+		if (status == -1)
+			return (84);
 	}
 	if (status == FEND)
 		return (0);
-	else if (status == -1)
-		return (84);
 	return (status);
 }
