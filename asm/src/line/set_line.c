@@ -13,7 +13,6 @@
 #include "token.h"
 
 static char const index[NB_INDEX][6] = {
-	"live",
 	"zjmp",
 	"sti",
 	"ldi",
