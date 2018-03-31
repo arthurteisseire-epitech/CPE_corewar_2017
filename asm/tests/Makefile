@@ -63,6 +63,7 @@ LIBS	=	-L$(DLIB) -l$(LIB)
 all: $(NAME)
 
 $(NAME):
+	make -C ..
 	gcc -o $(NAME) $(SRC) $(SRC_UT) $(CFLAGS) $(LDFLAGS) $(LIBS)
 
 clean:
