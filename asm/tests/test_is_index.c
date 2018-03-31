@@ -20,8 +20,6 @@ Test(is_index, True)
 	token_t token;
 
 	line.tokens = &token;
-	token.str = my_strdup("live");
-	cr_assert(is_index(&line) == 1);
 	token.str = my_strdup("zjmp");
 	cr_assert(is_index(&line) == 1);
 	token.str = my_strdup("sti");

@@ -12,10 +12,10 @@
 
 Test(label, is_label)
 {
-	cr_expect(is_label("label:") == 1);
+	cr_expect(is_label("label:") != 0);
 	cr_expect(is_label(":NOT_label") == 0);
 	cr_expect(is_label("not_label") == 0);
-	cr_expect(is_label("not:label") == 0);
+	cr_expect(is_label("not:label") != 0);
 }
 
 Test(label, is_label_call)
