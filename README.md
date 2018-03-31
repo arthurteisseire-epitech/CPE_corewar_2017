@@ -1,9 +1,9 @@
 # CPE_corewar_2017
 
-# Usage: 
+## Usage: 
   - cd asm
   - make
   - ./asm champ_name.s [other_champ_names.s]
   
-# Descritpion:
+## Description:
   asm binary generate binary champs to be interpreted by the virtual machine
