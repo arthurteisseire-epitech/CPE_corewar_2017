@@ -55,7 +55,6 @@ SRC_UT	=	$(SRC_UTD)test_get_id_cmd.c \
 		$(SRC_UTD)test_is_index.c \
 		$(SRC_UTD)test_label.c
 
-OBJ	=	$(SRC:.c=.o) $(SRC_UT:.c=.o)
 CFLAGS +=	-Wall -W -Wextra -I$(INC) --coverage
 LDFLAGS	=	-lcriterion -lgcov
 LIB	=	my
@@ -63,8 +62,8 @@ LIBS	=	-L$(DLIB) -l$(LIB)
 
 all: $(NAME)
 
-$(NAME):	$(OBJ)
-	gcc -o $(NAME) $(OBJ) $(CFLAGS) $(LDFLAGS) $(LIBS)
+$(NAME):
+	gcc -o $(NAME) $(SRC) $(SRC_UT) $(CFLAGS) $(LDFLAGS) $(LIBS)
 
 clean:
 	rm -f $(OBJ)
@@ -76,3 +75,4 @@ re: fclean all
 
 test_run: re
 	./$(NAME)
+	gcov *.gcno
